@@ -33,12 +33,19 @@ function sauvegarderProfil(profil) {
 function creerCartePersonnage(personnage, valeurEnregistree = -1) {
   const conteneur = document.createElement("div");
  
+  let fond = "";
+  if (personnage.rarete === "5") {
+    fond = "images/backgrounds/bg_5star.png";
+  } else {
+    fond = "images/backgrounds/bg_4star.png";
+  }
+ 
   const imageElement = iconesElements[personnage.element] || "";
  
   conteneur.innerHTML = `
-<div>
-<div style="position: relative; display: inline-block;">
-<img src="${personnage.image}" alt="${personnage.nom}" width="80">
+<div style="display: inline-block; margin: 6px; text-align: center;">
+<div style="position: relative; display: inline-block; background-image: url('${fond}'); background-size: cover; background-position: center; padding: 6px;">
+<img src="DB/${personnage.image}" alt="${personnage.nom}" width="80">
         ${
           imageElement
             ? `<img src="${imageElement}" alt="${personnage.element}" width="20" style="position: absolute; top: 0; left: 0;">`
@@ -46,9 +53,7 @@ function creerCartePersonnage(personnage, valeurEnregistree = -1) {
         }
 </div>
 <div>${personnage.nom}</div>
-<div>${personnage.element} - ${personnage.arme} - ${personnage.rarete}★</div>
 <label>
-        Constellation :
 <select data-id="${personnage.id}">
 <option value="-1" ${valeurEnregistree === -1 ? "selected" : ""}>Non possédé</option>
 <option value="0" ${valeurEnregistree === 0 ? "selected" : ""}>C0</option>
@@ -61,7 +66,6 @@ function creerCartePersonnage(personnage, valeurEnregistree = -1) {
 </select>
 </label>
 </div>
-<hr>
   `;
  
   return conteneur;
