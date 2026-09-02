@@ -549,12 +549,12 @@
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
-    "id": "alhaitam",
+    "id": "alhaitham",
     "nom": "Alhaitham",
     "rarete": "5",
     "element": "dendro",
     "arme": "sword",
-    "image": "images/characters/alhaitam.png",
+    "image": "images/characters/alhaitham.png",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
