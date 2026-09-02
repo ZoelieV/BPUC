@@ -1,0 +1,8 @@
+[
+  {
+    "id": "amber",
+    "nom": "Amber",
+    "image": "images/personnages/amber.png",
+    "pointsParConstellation": [0, 2, 5, 9, 14, 20, 27]
+  }
+]
