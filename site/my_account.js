@@ -1,11 +1,11 @@
 const iconesElements = {
-  Pyro: "images/elements/pyro.png",
-  Hydro: "images/elements/hydro.png",
-  Anemo: "images/elements/anemo.png",
-  Electro: "images/elements/electro.png",
-  Cryo: "images/elements/cryo.png",
-  Dendro: "images/elements/dendro.png",
-  Geo: "images/elements/geo.png"
+  pyro: "DB/images/others/pyro.png",
+  hydro: "DB/images/others/hydro.png",
+  anemo: "DB/images/others/anemo.png",
+  electro: "DB/images/others/electro.png",
+  cryo: "DB/images/others/cryo.png",
+  dendro: "DB/images/others/dendro.png",
+  geo: "DB/images/others/geo.png"
 };
  
 async function chargerPersonnages() {
@@ -35,36 +35,37 @@ function creerCartePersonnage(personnage, valeurEnregistree = -1) {
  
   let fond = "";
   if (personnage.rarete === "5") {
-    fond = "images/backgrounds/bg_5star.png";
+    fond = "DB/images/others/bg_5_star.png";
+  } else if (personnage.rarete === "3") {
+    fond = "DB/images/others/bg_3_star.png";
   } else {
-    fond = "images/backgrounds/bg_4star.png";
+    fond = "DB/images/others/bg_4_star.png";
   }
  
   const imageElement = iconesElements[personnage.element] || "";
+  const affichageConstellation = valeurEnregistree < 0 ? "-" : "C" + valeurEnregistree;
+  const opacite = valeurEnregistree < 0 ? "0.4" : "1";
  
   conteneur.innerHTML = `
-<div style="display: inline-block; margin: 6px; text-align: center;">
-<div style="position: relative; display: inline-block; background-image: url('${fond}'); background-size: cover; background-position: center; padding: 6px;">
-<img src="DB/${personnage.image}" alt="${personnage.nom}" width="80">
+<div style="width: 120px; text-align: center;">
+<div class="visuel-personnage" style="position: relative; display: inline-block; background-image: url('${fond}'); background-size: cover; background-position: center; padding: 6px; opacity: ${opacite};">
+<img src="DB/${personnage.image}" alt="${personnage.nom}" width="80" style="border-radius: 8px;">
         ${
           imageElement
-            ? `<img src="${imageElement}" alt="${personnage.element}" width="20" style="position: absolute; top: 0; left: 0;">`
+            ? `<img src="${imageElement}" alt="${personnage.element}" width="20" style="position: absolute; top: 2px; left: 2px;">`
             : ""
         }
 </div>
-<div>${personnage.nom}</div>
-<label>
-<select data-id="${personnage.id}">
-<option value="-1" ${valeurEnregistree === -1 ? "selected" : ""}>Non possédé</option>
-<option value="0" ${valeurEnregistree === 0 ? "selected" : ""}>C0</option>
-<option value="1" ${valeurEnregistree === 1 ? "selected" : ""}>C1</option>
-<option value="2" ${valeurEnregistree === 2 ? "selected" : ""}>C2</option>
-<option value="3" ${valeurEnregistree === 3 ? "selected" : ""}>C3</option>
-<option value="4" ${valeurEnregistree === 4 ? "selected" : ""}>C4</option>
-<option value="5" ${valeurEnregistree === 5 ? "selected" : ""}>C5</option>
-<option value="6" ${valeurEnregistree === 6 ? "selected" : ""}>C6</option>
-</select>
-</label>
+ 
+      <div>${personnage.nom}</div>
+ 
+      <div>
+<button type="button" class="moins-btn" data-id="${personnage.id}" style="width: 28px; height: 28px; font-size: 18px; font-weight: bold; border-radius: 6px;">-</button>
+<span class="constellation-valeur" data-id="${personnage.id}">${affichageConstellation}</span>
+<button type="button" class="plus-btn" data-id="${personnage.id}" style="width: 28px; height: 28px; font-size: 18px; font-weight: bold; border-radius: 6px;">+</button>
+</div>
+ 
+      <input type="hidden" class="constellation-input" data-id="${personnage.id}" value="${valeurEnregistree}">
 </div>
   `;
  
@@ -85,6 +86,42 @@ async function initialiserPage() {
     const valeur = profil.personnages[personnage.id] ?? -1;
     const carte = creerCartePersonnage(personnage, valeur);
     liste.appendChild(carte);
+  });
+
+  liste.addEventListener("click", function(event) {
+    const boutonMoins = event.target.closest(".moins-btn");
+    const boutonPlus = event.target.closest(".plus-btn");
+ 
+    if (!boutonMoins && !boutonPlus) {
+      return;
+    }
+ 
+    const id = (boutonMoins || boutonPlus).dataset.id;
+    const input = document.querySelector(`.constellation-input[data-id="${id}"]`);
+    const affichage = document.querySelector(`.constellation-valeur[data-id="${id}"]`);
+    const visuel = input.parentElement.querySelector(".visuel-personnage");
+ 
+    let valeur = Number(input.value);
+ 
+    if (boutonPlus) {
+      if (valeur === 6) {
+        valeur = -1;
+      } else {
+        valeur++;
+      }
+    }
+    
+    if (boutonMoins) {
+      if (valeur === -1) {
+        valeur = 6;
+      } else {
+        valeur--;
+      }
+    }
+ 
+    input.value = valeur;
+    affichage.textContent = valeur < 0 ? "-" : "C" + valeur;
+    visuel.style.opacity = valeur < 0 ? "0.4" : "1";
   });
  
   document.getElementById("profil-form").addEventListener("submit", function(event) {
