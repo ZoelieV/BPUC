@@ -29,6 +29,33 @@ function chargerProfil() {
 function sauvegarderProfil(profil) {
   localStorage.setItem("profil", JSON.stringify(profil));
 }
+
+function afficherPersonnages(personnages, profil) {
+  const liste = document.getElementById("liste-personnages");
+  liste.innerHTML = "";
+ 
+  const elementsSelectionnes = Array.from(document.querySelectorAll(".filtre-element:checked"))
+    .map(input => input.value);
+ 
+  const armesSelectionnees = Array.from(document.querySelectorAll(".filtre-arme:checked"))
+    .map(input => input.value);
+ 
+  const personnagesFiltres = personnages.filter(personnage => {
+    const filtreElementOK =
+      elementsSelectionnes.length === 0 || elementsSelectionnes.includes(personnage.element);
+ 
+    const filtreArmeOK =
+      armesSelectionnees.length === 0 || armesSelectionnees.includes(personnage.arme);
+ 
+    return filtreElementOK && filtreArmeOK;
+  });
+ 
+  personnagesFiltres.forEach(personnage => {
+    const valeur = profil.personnages[personnage.id] ?? -1;
+    const carte = creerCartePersonnage(personnage, valeur);
+    liste.appendChild(carte);
+  });
+}
  
 function creerCartePersonnage(personnage, valeurEnregistree = -1) {
   const conteneur = document.createElement("div");
@@ -79,14 +106,15 @@ async function initialiserPage() {
   document.getElementById("uid").value = profil.uid || "";
   document.getElementById("theatre").value = profil.theatre || "";
  
-  const liste = document.getElementById("liste-personnages");
-  liste.innerHTML = "";
- 
-  personnages.forEach(personnage => {
-    const valeur = profil.personnages[personnage.id] ?? -1;
-    const carte = creerCartePersonnage(personnage, valeur);
-    liste.appendChild(carte);
+  afficherPersonnages(personnages, profil);
+  
+  document.querySelectorAll(".filtre-element, .filtre-arme").forEach(input => {
+    input.addEventListener("change", () => {
+      afficherPersonnages(personnages, profil);
+    });
   });
+  
+  const liste = document.getElementById("liste-personnages");
 
   liste.addEventListener("click", function(event) {
     const boutonMoins = event.target.closest(".moins-btn");

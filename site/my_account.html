@@ -5,41 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mon compte</title>
 </head>
-<body style="background-color: #1e1e1e; color: white;">
- 
-<a href="base.html">Accueil</a>
- 
-  <h1>Mon compte</h1>
- 
-  <form id="profil-form">
-<div>
-<label for="uid">UID :</label>
-<input type="text" id="uid" name="uid">
-</div>
- 
-    <br>
- 
+  <style>
+    .filtre-icone input {
+      display: none;
+    }
+  
+    .filtre-icone img {
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 4px;
+      cursor: pointer;
+    }
+  
+    .filtre-icone input:checked + img {
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+  </style>
+
+  <body style="background-color: #1e1e1e; color: white;">
+  
+  <a href="base.html">Accueil</a>
+  
+    <h1>Mon compte</h1>
+  
+    <form id="profil-form">
     <div>
-<label for="theatre">Théâtre clear :</label>
-<select id="theatre" name="theatre">
-<option value="">Choisir</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-</select>
-</div>
- 
+    <label for="uid">UID :</label>
+    <input type="text" id="uid" name="uid">
+    </div>
+
     <br>
- 
+
+    <div>
+    <label for="theatre">Théâtre clear :</label>
+    <select id="theatre" name="theatre">
+    <option value="">Choisir</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    </select>
+    </div>
+
+    <br>
+  
     <h2>Personnages</h2>
-<div id="liste-personnages" style="display: flex; flex-wrap: wrap; gap: 12px;"></div>
+
+    <h2>Filtres</h2>
+
+    <div>
+    <strong>Éléments :</strong>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="pyro"><img src="DB/images/others/pyro.png" alt="Pyro" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="hydro"><img src="DB/images/others/hydro.png" alt="hydro" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="electro"><img src="DB/images/others/electro.png" alt="electro" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="cryo"><img src="DB/images/others/cryo.png" alt="cryo" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="anemo"><img src="DB/images/others/anemo.png" alt="anemo" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="geo"><img src="DB/images/others/geo.png" alt="geo" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="dendro"><img src="DB/images/others/dendro.png" alt="dendro" width="30"></label>
  
+    </div>
+
     <br>
- 
-    <button type="submit">Enregistrer</button>
-</form>
- 
-  <script src="my_account.js"></script>
-</body>
+
+    <div>
+    <strong>Armes :</strong>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="sword"><img src="DB/images/others/sword.png" alt="sword" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="claymore"><img src="DB/images/others/claymore.png" alt="claymore" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="polearm"><img src="DB/images/others/polearm.png" alt="polearm" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="bow"><img src="DB/images/others/bow.png" alt="bow" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="catalyst"><img src="DB/images/others/catalyst.png" alt="catalyst" width="30"></label>
+    </div>
+
+    <br>
+
+    <div id="liste-personnages" style="display: flex; flex-wrap: wrap; gap: 12px;"></div>
+
+        <br>
+
+        <button type="submit">Enregistrer</button>
+  </form>
+  
+    <script src="my_account.js"></script>
+  </body>
 </html>
