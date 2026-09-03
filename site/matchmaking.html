@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Créer un match</title>
+<meta charset="UTF-8">
+<title>Créer un match</title>
 </head>
 <body>
-  <a href="base.html">Accueil</a>
-  <h1>Créer un match</h1>
+<a href="base.html">Accueil</a>
+<h1>Créer un match</h1>
+ 
+  <button id="creer-room">Créer une room</button>
+ 
+  <script>
+    document.getElementById("creer-room").addEventListener("click", async () => {
+      const reponse = await fetch("/api/rooms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+ 
+      const data = await reponse.json();
+ 
+      window.location.href = `match.html?room=${data.roomId}&player=j1`;
+    });
+</script>
 </body>
 </html>

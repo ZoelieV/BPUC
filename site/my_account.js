@@ -126,19 +126,19 @@ async function initialiserPage() {
  
   document.getElementById("profil-form").addEventListener("submit", function(event) {
     event.preventDefault();
- 
+  
     const nouveauProfil = {
       uid: document.getElementById("uid").value,
       theatre: document.getElementById("theatre").value,
       personnages: {}
     };
- 
-    const selects = document.querySelectorAll("#liste-personnages select");
- 
-    selects.forEach(select => {
-      nouveauProfil.personnages[select.dataset.id] = Number(select.value);
+  
+    const inputs = document.querySelectorAll(".constellation-input");
+  
+    inputs.forEach(input => {
+      nouveauProfil.personnages[input.dataset.id] = Number(input.value);
     });
- 
+  
     sauvegarderProfil(nouveauProfil);
     alert("Profil enregistré");
   });

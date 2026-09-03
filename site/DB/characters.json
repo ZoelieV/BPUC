@@ -1002,9 +1002,9 @@
     "id": "varka",
     "nom": "Varka",
     "rarete": "5",
-    "element": "anmeo",
+    "element": "anemo",
     "arme": "claymore",
-    "image": "images/characters/varka.png",
+    "image": "images/characters/varka.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1013,7 +1013,7 @@
     "rarete": "5",
     "element": "geo",
     "arme": "bow",
-    "image": "images/characters/linnea.png",
+    "image": "images/characters/linnea.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
 
@@ -1023,7 +1023,7 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "claymore",
-    "image": "images/characters/prune.png",
+    "image": "images/characters/prune.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1032,7 +1032,7 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "catalyst",
-    "image": "images/characters/nicole.png",
+    "image": "images/characters/nicole.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1041,7 +1041,7 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "polearm",
-    "image": "images/characters/lohen.png",
+    "image": "images/characters/lohen.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1050,7 +1050,7 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "claymore",
-    "image": "images/characters/sandrone.png",
+    "image": "images/characters/sandrone.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1059,7 +1059,7 @@
     "rarete": "4",
     "element": "electro",
     "arme": "polearm",
-    "image": "images/characters/alyosha.png",
+    "image": "images/characters/alyosha.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1068,7 +1068,7 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "sword",
-    "image": "images/characters/odette.png",
+    "image": "images/characters/odette.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1077,7 +1077,7 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
-    "image": "images/characters/vodyanitsa.png",
+    "image": "images/characters/vodyanitsa.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
@@ -1086,7 +1086,7 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "sword",
-    "image": "images/characters/vesna.png",
+    "image": "images/characters/vesna.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   }
 ]
