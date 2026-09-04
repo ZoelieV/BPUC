@@ -351,12 +351,12 @@
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
-    "id": "kokofish",
+    "id": "kokomi",
     "nom": "Sangonomiya Kokomi",
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
-    "image": "images/characters/kokofish.webp",
+    "image": "images/characters/kokomi.webp",
     "PPC": [0, 0, 0, 0, 0, 0, 0]
   },
   {
