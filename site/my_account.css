@@ -1,0 +1,177 @@
+body {
+  background-color: #1e1e1e;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+ 
+a {
+  color: white;
+}
+ 
+.lien-accueil {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+ 
+h1,
+h2 {
+  margin-top: 20px;
+}
+ 
+.bloc-form {
+  margin-bottom: 14px;
+}
+ 
+.bloc-filtres {
+  margin-bottom: 14px;
+}
+ 
+.filtre-icone input,
+.filtre-texte input {
+  display: none;
+}
+ 
+.filtre-icone img {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+}
+ 
+.filtre-icone input:checked + img {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+ 
+.filtre-texte span {
+  display: inline-block;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+ 
+.filtre-texte input:checked + span {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+ 
+.box-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 12px 0;
+}
+ 
+.box-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+ 
+.box-btn.active {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+ 
+.box-total {
+  margin: 12px 0 18px 0;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  width: fit-content;
+}
+ 
+.liste-personnages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+ 
+.carte-personnage {
+  width: 120px;
+  text-align: center;
+}
+ 
+.visuel-personnage {
+  position: relative;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  padding: 6px;
+  border-radius: 8px;
+}
+ 
+.image-personnage {
+  width: 80px;
+  border-radius: 8px;
+  display: block;
+}
+ 
+.icone-element {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+}
+ 
+.ppc-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+ 
+.nom-personnage {
+  margin-top: 6px;
+  font-size: 14px;
+}
+ 
+.info-constellation {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+ 
+.controle-constellation {
+  margin-top: 6px;
+}
+ 
+.constellation-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+ 
+.toggle-box-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+ 
+.btn-enregistrer {
+  margin-top: 18px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
