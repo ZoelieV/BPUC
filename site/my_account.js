@@ -1,11 +1,11 @@
 const iconesElements = {
-  pyro: "DB/images/others/pyro.png",
-  hydro: "DB/images/others/hydro.png",
-  anemo: "DB/images/others/anemo.png",
-  electro: "DB/images/others/electro.png",
-  cryo: "DB/images/others/cryo.png",
-  dendro: "DB/images/others/dendro.png",
-  geo: "DB/images/others/geo.png"
+  pyro: "DB/images/others/pyro.webp",
+  hydro: "DB/images/others/hydro.webp",
+  anemo: "DB/images/others/anemo.webp",
+  electro: "DB/images/others/electro.webp",
+  cryo: "DB/images/others/cryo.webp",
+  dendro: "DB/images/others/dendro.webp",
+  geo: "DB/images/others/geo.webp"
 };
  
 async function chargerPersonnages() {
@@ -29,17 +29,52 @@ function chargerProfil() {
 function sauvegarderProfil(profil) {
   localStorage.setItem("profil", JSON.stringify(profil));
 }
+
+function afficherPersonnages(personnages, profil) {
+  const liste = document.getElementById("liste-personnages");
+  liste.innerHTML = "";
+ 
+  const elementsSelectionnes = Array.from(document.querySelectorAll(".filtre-element:checked"))
+    .map(input => input.value);
+ 
+  const armesSelectionnees = Array.from(document.querySelectorAll(".filtre-arme:checked"))
+    .map(input => input.value);
+
+  const rareteSelectionnees = Array.from(document.querySelectorAll(".filtre-rarete:checked"))
+    .map(input => input.value);
+ 
+  const personnagesFiltres = personnages.filter(personnage => {
+    const filtreElementOK =
+      elementsSelectionnes.length === 0 || elementsSelectionnes.includes(personnage.element);
+ 
+    const filtreArmeOK =
+      armesSelectionnees.length === 0 || armesSelectionnees.includes(personnage.arme);
+
+    const filtreRareteOK =
+      rareteSelectionnees.length === 0 || rareteSelectionnees.includes(personnage.rarete);
+    
+
+ 
+    return filtreElementOK && filtreArmeOK && filtreRareteOK;
+  });
+ 
+  personnagesFiltres.forEach(personnage => {
+    const valeur = profil.personnages[personnage.id] ?? -1;
+    const carte = creerCartePersonnage(personnage, valeur);
+    liste.appendChild(carte);
+  });
+}
  
 function creerCartePersonnage(personnage, valeurEnregistree = -1) {
   const conteneur = document.createElement("div");
  
   let fond = "";
   if (personnage.rarete === "5") {
-    fond = "DB/images/others/bg_5_star.png";
+    fond = "DB/images/others/bg_5_star.webp";
   } else if (personnage.rarete === "3") {
-    fond = "DB/images/others/bg_3_star.png";
+    fond = "DB/images/others/bg_3_star.webp";
   } else {
-    fond = "DB/images/others/bg_4_star.png";
+    fond = "DB/images/others/bg_4_star.webp";
   }
  
   const imageElement = iconesElements[personnage.element] || "";
@@ -79,14 +114,15 @@ async function initialiserPage() {
   document.getElementById("uid").value = profil.uid || "";
   document.getElementById("theatre").value = profil.theatre || "";
  
-  const liste = document.getElementById("liste-personnages");
-  liste.innerHTML = "";
- 
-  personnages.forEach(personnage => {
-    const valeur = profil.personnages[personnage.id] ?? -1;
-    const carte = creerCartePersonnage(personnage, valeur);
-    liste.appendChild(carte);
+  afficherPersonnages(personnages, profil);
+  
+  document.querySelectorAll(".filtre-element, .filtre-arme, .filtre-rarete").forEach(input => {
+    input.addEventListener("change", () => {
+      afficherPersonnages(personnages, profil);
+    });
   });
+  
+  const liste = document.getElementById("liste-personnages");
 
   liste.addEventListener("click", function(event) {
     const boutonMoins = event.target.closest(".moins-btn");
