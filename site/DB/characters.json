@@ -15,7 +15,7 @@
     "element": "cryo",
     "arme": "sword",
     "image": "images/characters/kaeya.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 10]
   },
   {
     "id": "lisa",
@@ -24,7 +24,7 @@
     "element": "electro",
     "arme": "catalyst",
     "image": "images/characters/lisa.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "barbara",
@@ -33,7 +33,7 @@
     "element": "hydro",
     "arme": "catalyst",
     "image": "images/characters/barbara.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 10, 10, 10, 10, 10, 10]
   },
   {
       "id": "razor",
@@ -42,7 +42,7 @@
       "element": "electro",
       "arme": "claymore",
       "image": "images/characters/razor.png",
-      "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 10]
   },
   {
     "id": "xiangling",
@@ -51,7 +51,7 @@
     "element": "pyro",
     "arme": "polearm",
     "image": "images/characters/xiangling.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [25, 30, 30, 30, 35, 35, 35]
   },
   {
     "id": "beidou",
@@ -60,7 +60,7 @@
     "element": "electro",
     "arme": "claymore",
     "image": "images/characters/beidou.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 10]
   },
   {
     "id": "xingqiu",
@@ -69,7 +69,7 @@
     "element": "hydro",
     "arme": "sword",
     "image": "images/characters/xingqiu.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [35, 35, 45, 50, 50, 50, 70]
   },
   {
     "id": "ningguang",
@@ -78,7 +78,7 @@
     "element": "geo",
     "arme": "catalyst",
     "image": "images/characters/ningguang.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "fischl",
@@ -87,7 +87,7 @@
     "element": "electro",
     "arme": "bow",
     "image": "images/characters/fischl.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [50, 50, 50, 55, 55, 55, 65]
   },
   {
     "id": "bennett",
@@ -96,7 +96,7 @@
     "element": "pyro",
     "arme": "sword",
     "image": "images/characters/bennett.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [50, 55, 55, 55, 55, 60, 65]
   },
   {
     "id": "noelle",
@@ -105,7 +105,7 @@
     "element": "geo",
     "arme": "claymore",
     "image": "images/characters/noelle.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 10]
   },
   {
     "id": "chongyun",
@@ -114,7 +114,7 @@
     "element": "cryo",
     "arme": "claymore",
     "image": "images/characters/chongyun.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 10, 10, 10, 10, 15]
   },
   {
     "id": "sucrose",
@@ -123,7 +123,7 @@
     "element": "anemo",
     "arme": "catalyst",
     "image": "images/characters/sucrose.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [75, 75, 75, 75, 75, 75, 75]
   },
   {
     "id": "jean",
@@ -132,7 +132,7 @@
     "element": "anemo",
     "arme": "sword",
     "image": "images/characters/jean.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 10, 10, 10, 15, 15, 15]
   },
   {
     "id": "diluc",
@@ -141,7 +141,7 @@
     "element": "pyro",
     "arme": "claymore",
     "image": "images/characters/diluc.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "qiqi",
@@ -150,7 +150,7 @@
     "element": "cryo",
     "arme": "sword",
     "image": "images/characters/qiqi.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 15, 15, 15, 15, 15, 15]
   },
   {
     "id": "mona",
@@ -159,7 +159,7 @@
     "element": "hydro",
     "arme": "catalyst",
     "image": "images/characters/mona.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [45, 50, 55, 55, 60, 60, 60]
   },
   {
     "id": "keqing",
@@ -168,7 +168,7 @@
     "element": "electro",
     "arme": "sword",
     "image": "images/characters/keqing.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "venti",
@@ -177,7 +177,7 @@
     "element": "anemo",
     "arme": "bow",
     "image": "images/characters/venti.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [20, 25, 85, 95, 120, 130, 200]
   },
   {
     "id": "klee",
@@ -186,7 +186,7 @@
     "element": "pyro",
     "arme": "catalyst",
     "image": "images/characters/klee.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [50, 55, 100, 105, 110, 115, 120]
   },
   {
     "id": "diona",
@@ -195,7 +195,7 @@
     "element": "cryo",
     "arme": "bow",
     "image": "images/characters/diona.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 15]
   },
   {
     "id": "tartaglia",
@@ -204,7 +204,7 @@
     "element": "hydro",
     "arme": "bow",
     "image": "images/characters/tartaglia.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 20, 20, 25, 25, 25, 30]
   },
   {
     "id": "xinyan",
@@ -222,7 +222,7 @@
     "element": "geo",
     "arme": "polearm",
     "image": "images/characters/zhongli.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [20, 25, 25, 25, 25, 25, 25]
   },
   {
     "id": "albedo",
@@ -231,7 +231,7 @@
     "element": "geo",
     "arme": "sword",
     "image": "images/characters/albedo.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [60, 65, 70, 75, 80, 80, 95]
   },
   {
     "id": "ganyu",
@@ -240,7 +240,7 @@
     "element": "cryo",
     "arme": "bow",
     "image": "images/characters/ganyu.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 20, 20, 25, 30, 30, 85]
   },
   {
     "id": "xiao",
@@ -249,7 +249,7 @@
     "element": "anemo",
     "arme": "polearm",
     "image": "images/characters/xiao.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 15, 15, 15, 15, 15, 15]
   },
   {
     "id": "hutao",
@@ -258,7 +258,7 @@
     "element": "pyro",
     "arme": "polearm",
     "image": "images/characters/hutao.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 40, 45, 55, 55, 65, 85]
   },
   {
     "id": "rosaria",
@@ -267,7 +267,7 @@
     "element": "cryo",
     "arme": "polearm",
     "image": "images/characters/rosaria.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 10, 10, 10, 10, 10]
   },
   {
     "id": "yanfei",
@@ -276,7 +276,7 @@
     "element": "pyro",
     "arme": "catalyst",
     "image": "images/characters/yanfei.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "eula",
@@ -285,7 +285,7 @@
     "element": "cryo",
     "arme": "claymore",
     "image": "images/characters/eula.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 10, 10, 55, 55, 55, 75]
   },
   {
     "id": "kazuha",
@@ -294,7 +294,7 @@
     "element": "anemo",
     "arme": "sword",
     "image": "images/characters/kazuha.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [55, 55, 65, 65, 65, 65, 90]
   },
   {
     "id": "ayaya",
@@ -303,7 +303,7 @@
     "element": "cryo",
     "arme": "sword",
     "image": "images/characters/ayaya.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [20, 20, 25, 30, 90, 90, 95]
   },
   {
     "id": "sayu",
@@ -312,7 +312,7 @@
     "element": "anemo",
     "arme": "claymore",
     "image": "images/characters/sayu.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 10, 10, 10, 10, 10, 10]
   },
   {
     "id": "yoimiya",
@@ -321,7 +321,7 @@
     "element": "pyro",
     "arme": "bow",
     "image": "images/characters/yoimiya.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 15, 20, 20, 20, 20, 30]
   },
   {
     "id": "aloy",
@@ -339,7 +339,7 @@
     "element": "electro",
     "arme": "bow",
     "image": "images/characters/sara.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 10]
   },
   {
     "id": "raiden",
@@ -348,7 +348,7 @@
     "element": "electro",
     "arme": "polearm",
     "image": "images/characters/raiden.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [50, 50, 85, 90, 90, 90, 90]
   },
   {
     "id": "kokofish",
@@ -357,7 +357,7 @@
     "element": "hydro",
     "arme": "catalyst",
     "image": "images/characters/kokofish.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 20, 20, 20, 20, 20, 30]
   },
   {
     "id": "thoma",
@@ -366,7 +366,7 @@
     "element": "pyro",
     "arme": "polearm",
     "image": "images/characters/thoma.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "gorou",
@@ -375,7 +375,7 @@
     "element": "geo",
     "arme": "bow",
     "image": "images/characters/gorou.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 10, 10, 10, 10, 10, 15]
   },
   {
     "id": "itto",
@@ -384,7 +384,7 @@
     "element": "geo",
     "arme": "claymore",
     "image": "images/characters/itto.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 15, 40, 40, 45, 50, 70]
   },
   {
     "id": "yunjin",
@@ -393,7 +393,7 @@
     "element": "geo",
     "arme": "polearm",
     "image": "images/characters/yunjin.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "shenhe",
@@ -402,7 +402,7 @@
     "element": "cryo",
     "arme": "polearm",
     "image": "images/characters/shenhe.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [40, 45, 50, 55, 55, 55, 85]
   },
   {
     "id": "yae",
@@ -411,7 +411,7 @@
     "element": "electro",
     "arme": "catalyst",
     "image": "images/characters/yae.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [80, 95, 120, 125, 130, 130, 165]
   },
   {
     "id": "ayato",
@@ -420,7 +420,7 @@
     "element": "hydro",
     "arme": "sword",
     "image": "images/characters/ayato.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [25, 25, 35, 40, 45, 50, 60]
   },
   {
     "id": "yelan",
@@ -429,7 +429,7 @@
     "element": "hydro",
     "arme": "bow",
     "image": "images/characters/yelan.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [75, 85, 130, 145, 150, 155, 225]
   },
   {
     "id": "kuki",
@@ -438,7 +438,7 @@
     "element": "electro",
     "arme": "sword",
     "image": "images/characters/kuki.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [50, 50, 50, 50, 50, 50, 50]
   },
   {
     "id": "heizou",
@@ -447,7 +447,7 @@
     "element": "anemo",
     "arme": "catalyst",
     "image": "images/characters/heizou.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 15, 15, 15, 15, 15, 15]
   },
   {
     "id": "collei",
@@ -456,7 +456,7 @@
     "element": "dendro",
     "arme": "bow",
     "image": "images/characters/collei.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "tighnari",
@@ -465,7 +465,7 @@
     "element": "dendro",
     "arme": "bow",
     "image": "images/characters/tighnari.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [35, 35, 40, 40, 50, 50, 80]
   },
   {
     "id": "dori",
@@ -474,7 +474,7 @@
     "element": "electro",
     "arme": "catalyst",
     "image": "images/characters/dori.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "candace",
@@ -483,7 +483,7 @@
     "element": "hydro",
     "arme": "polearm",
     "image": "images/characters/candace.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 10]
   },
   {
     "id": "cyno",
@@ -492,7 +492,7 @@
     "element": "electro",
     "arme": "polearm",
     "image": "images/characters/cyno.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [75, 85, 100, 105, 120, 120, 250]
   },
   {
     "id": "nilou",
@@ -501,7 +501,7 @@
     "element": "hydro",
     "arme": "sword",
     "image": "images/characters/nilou.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 15, 50, 50, 50, 50, 75]
   },
   {
     "id": "nahida",
@@ -510,7 +510,7 @@
     "element": "dendro",
     "arme": "catalyst",
     "image": "images/characters/nahida.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [50, 55, 95, 100, 105, 110, 145]
   },
   {
     "id": "layla",
@@ -519,7 +519,7 @@
     "element": "cryo",
     "arme": "sword",
     "image": "images/characters/layla.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 10, 10, 10]
   },
   {
     "id": "faruzan",
@@ -528,7 +528,7 @@
     "element": "anemo",
     "arme": "bow",
     "image": "images/characters/faruzan.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 15, 15, 15, 15, 15, 20]
   },
   {
     "id": "wanderer",
@@ -537,7 +537,7 @@
     "element": "anemo",
     "arme": "catalyst",
     "image": "images/characters/wanderer.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 15, 40, 75, 80, 85, 125]
   },
   {
     "id": "yaoyao",
@@ -546,7 +546,7 @@
     "element": "dendro",
     "arme": "polearm",
     "image": "images/characters/yaoyao.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "alhaitham",
@@ -555,7 +555,7 @@
     "element": "dendro",
     "arme": "sword",
     "image": "images/characters/alhaitham.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [35, 35, 45, 50, 55, 60, 70]
   },
   {
     "id": "dehya",
@@ -564,7 +564,7 @@
     "element": "pyro",
     "arme": "claymore",
     "image": "images/characters/dehya.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 10]
   },
   {
     "id": "mika",
@@ -573,7 +573,7 @@
     "element": "cryo",
     "arme": "polearm",
     "image": "images/characters/mika.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "kaveh",
@@ -591,7 +591,7 @@
     "element": "dendro",
     "arme": "catalyst",
     "image": "images/characters/baizhu.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 15, 20, 20, 20, 20, 20]
   },
   {
     "id": "kirara",
@@ -600,7 +600,7 @@
     "element": "dendro",
     "arme": "sword",
     "image": "images/characters/kirara.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "lynette",
@@ -609,7 +609,7 @@
     "element": "anemo",
     "arme": "sword",
     "image": "images/characters/lynette.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 5, 5, 5, 5]
   },
   {
     "id": "lyney",
@@ -618,7 +618,7 @@
     "element": "pyro",
     "arme": "bow",
     "image": "images/characters/lyney.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 40, 60, 70, 85, 90, 135]
   },
   {
     "id": "freminet",
@@ -636,7 +636,7 @@
     "element": "hydro",
     "arme": "catalyst",
     "image": "images/characters/neuvillette.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [85, 125, 140, 175, 175, 175, 240]
   },
   {
     "id": "wriothesley",
@@ -645,7 +645,7 @@
     "element": "cryo",
     "arme": "catalyst",
     "image": "images/characters/wrio.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [90, 100, 145, 175, 195, 200, 275]
   },
   {
     "id": "charlotte",
@@ -654,8 +654,8 @@
     "element": "cryo",
     "arme": "catalyst",
     "image": "images/characters/charlotte.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
-  },
+    "PPC": [15, 15, 15, 15, 15, 15, 15]
+    },
   {
     "id": "fufu",
     "nom": "Furina",
@@ -663,7 +663,7 @@
     "element": "hydro",
     "arme": "sword",
     "image": "images/characters/fufu.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [95, 120, 150, 165, 170, 195, 265]
   },
   {
     "id": "navia",
@@ -672,7 +672,7 @@
     "element": "geo",
     "arme": "claymore",
     "image": "images/characters/navia.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [85, 90, 110, 120, 130, 135, 190]
   },
   {
     "id": "chevreuse",
@@ -681,7 +681,7 @@
     "element": "pyro",
     "arme": "polearm",
     "image": "images/characters/chevreuse.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [35, 35, 35, 35, 35, 35, 45]
   },
   {
     "id": "gaming",
@@ -690,7 +690,7 @@
     "element": "pyro",
     "arme": "claymore",
     "image": "images/characters/gaming.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 5, 5, 10, 10, 10, 15]
   },
   {
     "id": "xianyun",
@@ -699,7 +699,7 @@
     "element": "anemo",
     "arme": "catalyst",
     "image": "images/characters/xianyun.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [35, 45, 55, 65, 65, 65, 100]
   },
   {
     "id": "chiori",
@@ -708,7 +708,7 @@
     "element": "geo",
     "arme": "sword",
     "image": "images/characters/chiori.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [45, 60, 80, 100, 125, 130, 185]
   },
   {
     "id": "arlecchino",
@@ -717,7 +717,7 @@
     "element": "pyro",
     "arme": "polearm",
     "image": "images/characters/arlecchino.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [85, 120, 145, 165, 165, 165, 245]
   },
   {
     "id": "sethos",
@@ -735,7 +735,7 @@
     "element": "electro",
     "arme": "sword",
     "image": "images/characters/clorinde.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [60, 75, 100, 115, 135, 145, 215]
   },
   {
     "id": "sigewinne",
@@ -744,7 +744,7 @@
     "element": "hydro",
     "arme": "bow",
     "image": "images/characters/sigewinne.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [5, 10, 40, 40, 55, 60, 85]
   },
   {
     "id": "emilie",
@@ -753,7 +753,7 @@
     "element": "dendro",
     "arme": "polearm",
     "image": "images/characters/emilie.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [45, 60, 90, 95, 115, 125, 185]
   },
   {
     "id": "kachina",
@@ -762,7 +762,7 @@
     "element": "geo",
     "arme": "polearm",
     "image": "images/characters/kachina.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 10, 10, 10, 10, 10, 10]
   },
   {
     "id": "mualani",
@@ -771,7 +771,7 @@
     "element": "hydro",
     "arme": "catalyst",
     "image": "images/characters/mualani.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [90, 125, 165, 200, 215, 220, 285]
   },
   {
     "id": "kinich",
@@ -780,7 +780,7 @@
     "element": "dendro",
     "arme": "claymore",
     "image": "images/characters/kinich.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [90, 115, 155, 200, 210, 215, 260]
   },
   {
     "id": "xilonen",
@@ -789,7 +789,7 @@
     "element": "geo",
     "arme": "sword",
     "image": "images/characters/xilonen.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [60, 60, 90, 95, 105, 105, 135]
   },
   {
     "id": "ororon",
@@ -798,7 +798,7 @@
     "element": "electro",
     "arme": "bow",
     "image": "images/characters/ororon.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [30, 30, 30, 30, 30, 30, 35]
   },
   {
     "id": "chasca",
@@ -807,7 +807,7 @@
     "element": "anemo",
     "arme": "bow",
     "image": "images/characters/chasca.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [85, 125, 170, 195, 205, 210, 280]
   },
   {
     "id": "citlali",
@@ -816,7 +816,7 @@
     "element": "cryo",
     "arme": "catalyst",
     "image": "images/characters/citlali.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [70, 75, 135, 145, 165, 175, 255]
   },
   {
     "id": "mavuika",
@@ -825,7 +825,7 @@
     "element": "pyro",
     "arme": "claymore",
     "image": "images/characters/mavuika.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [110, 140, 190, 210, 225, 235, 280]
   },
   {
     "id": "lanyan",
@@ -834,7 +834,7 @@
     "element": "anemo",
     "arme": "catalyst",
     "image": "images/characters/lanyan.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 15, 15, 15, 20, 20, 20]
   },
   {
     "id": "mizuki",
@@ -843,7 +843,7 @@
     "element": "anemo",
     "arme": "catalyst",
     "image": "images/characters/mizuki.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [65, 80, 95, 95, 100, 100, 150]
   },
   {
     "id": "iansan",
@@ -852,7 +852,7 @@
     "element": "electro",
     "arme": "polearm",
     "image": "images/characters/iansan.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [45, 45, 50, 50, 55, 60, 65]
   },
   {
     "id": "varesa",
@@ -861,7 +861,7 @@
     "element": "electro",
     "arme": "catalyst",
     "image": "images/characters/varesa.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [95, 110, 170, 165, 185, 195, 280]
   },
   {
     "id": "ifa",
@@ -870,7 +870,7 @@
     "element": "anemo",
     "arme": "catalyst",
     "image": "images/characters/ifa.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [15, 15, 15, 15, 15, 15, 15]
   },
   {
     "id": "escoffier",
@@ -879,7 +879,7 @@
     "element": "cryo",
     "arme": "polearm",
     "image": "images/characters/escoffier.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [95, 120, 130, 150, 150, 155, 225]
   },
   {
     "id": "dahlia",
@@ -897,7 +897,7 @@
     "element": "cryo",
     "arme": "sword",
     "image": "images/characters/skirk.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [115, 130, 190, 200, 225, 225, 280]
   },
   {
     "id": "ineffa",
@@ -906,7 +906,7 @@
     "element": "electro",
     "arme": "polearm",
     "image": "images/characters/ineffa.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [105, 140, 175, 175, 200, 200, 255]
   },
   {
     "id": "aino",
@@ -915,7 +915,7 @@
     "element": "hydro",
     "arme": "claymore",
     "image": "images/characters/aino.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [35, 40, 45, 45, 45, 45, 50]
   },
   {
     "id": "lauma",
@@ -924,7 +924,7 @@
     "element": "dendro",
     "arme": "catalyst",
     "image": "images/characters/lauma.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [95, 105, 140, 150, 155, 160, 300]
   },
   {
     "id": "flin",
@@ -933,7 +933,7 @@
     "element": "electro",
     "arme": "polearm",
     "image": "images/characters/flin.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [100, 130, 165, 185, 200, 205, 275]
   },
   {
     "id": "manekin",
@@ -951,7 +951,7 @@
     "element": "dendro",
     "arme": "catalyst",
     "image": "images/characters/nefer.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [100, 130, 165, 185, 195, 175, 280]
   },
   {
     "id": "jahoda",
@@ -960,7 +960,7 @@
     "element": "anemo",
     "arme": "sword",
     "image": "images/characters/jahoda.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [10, 10, 10, 10, 10, 10, 15]
   },
   {
     "id": "durin",
@@ -969,7 +969,7 @@
     "element": "pyro",
     "arme": "sword",
     "image": "images/characters/durin.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [95, 130, 170, 180, 190, 195, 285]
   },
   {
     "id": "columbina",
@@ -978,7 +978,7 @@
     "element": "hydro",
     "arme": "catalyst",
     "image": "images/characters/columbina.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [105, 110, 170, 180, 190, 200, 285]
   },
   {
     "id": "illuga",
@@ -987,7 +987,7 @@
     "element": "geo",
     "arme": "polearm",
     "image": "images/characters/illuga.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [25, 25, 30, 30, 35, 35, 40]
   },
   {
     "id": "zibai",
@@ -996,7 +996,7 @@
     "element": "geo",
     "arme": "sword",
     "image": "images/characters/zibai.png",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [100, 135, 160, 180, 195, 200, 280]
   },
   {
     "id": "varka",
@@ -1005,7 +1005,7 @@
     "element": "anemo",
     "arme": "claymore",
     "image": "images/characters/varka.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [90, 115, 150, 165, 180, 195, 245]
   },
   {
     "id": "linnea",
@@ -1014,7 +1014,7 @@
     "element": "geo",
     "arme": "bow",
     "image": "images/characters/linnea.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [90, 95, 185, 220, 225, 225, 295]
   },
 
   {
@@ -1024,7 +1024,7 @@
     "element": "anemo",
     "arme": "claymore",
     "image": "images/characters/prune.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [60, 60, 60, 60, 60, 60, 65]
   },
   {
     "id": "nicole",
@@ -1033,7 +1033,7 @@
     "element": "pyro",
     "arme": "catalyst",
     "image": "images/characters/nicole.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [65, 70, 115, 120, 130, 130, 250]
   },
   {
     "id": "lohen",
@@ -1042,7 +1042,7 @@
     "element": "cryo",
     "arme": "polearm",
     "image": "images/characters/lohen.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [70, 75, 90, 100, 110, 115, 195]
   },
   {
     "id": "sandrone",
@@ -1051,7 +1051,7 @@
     "element": "cryo",
     "arme": "claymore",
     "image": "images/characters/sandrone.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [105, 120, 140, 160, 175, 185, 240]
   },
   {
     "id": "alyosha",
@@ -1060,7 +1060,7 @@
     "element": "electro",
     "arme": "polearm",
     "image": "images/characters/alyosha.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [35, 35, 40, 40, 40, 40, 50]
   },
   {
     "id": "odette",
@@ -1069,7 +1069,7 @@
     "element": "cryo",
     "arme": "sword",
     "image": "images/characters/odette.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [115, 160, 190, 220, 250, 255, 295]
   },
   {
     "id": "vodyanitsa",
@@ -1078,7 +1078,7 @@
     "element": "hydro",
     "arme": "catalyst",
     "image": "images/characters/vodyanitsa.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [65, 65, 65, 65, 65, 65, 65]
   },
   {
     "id": "vesna",
@@ -1087,6 +1087,6 @@
     "element": "anemo",
     "arme": "sword",
     "image": "images/characters/vesna.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [100, 100, 100, 100, 100, 100, 100]
   }
 ]
