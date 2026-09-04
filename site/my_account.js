@@ -1,11 +1,11 @@
 const iconesElements = {
-  pyro: "DB/images/others/pyro.png",
-  hydro: "DB/images/others/hydro.png",
-  anemo: "DB/images/others/anemo.png",
-  electro: "DB/images/others/electro.png",
-  cryo: "DB/images/others/cryo.png",
-  dendro: "DB/images/others/dendro.png",
-  geo: "DB/images/others/geo.png"
+  pyro: "DB/images/others/pyro.webp",
+  hydro: "DB/images/others/hydro.webp",
+  anemo: "DB/images/others/anemo.webp",
+  electro: "DB/images/others/electro.webp",
+  cryo: "DB/images/others/cryo.webp",
+  dendro: "DB/images/others/dendro.webp",
+  geo: "DB/images/others/geo.webp"
 };
  
 async function chargerPersonnages() {
@@ -39,6 +39,9 @@ function afficherPersonnages(personnages, profil) {
  
   const armesSelectionnees = Array.from(document.querySelectorAll(".filtre-arme:checked"))
     .map(input => input.value);
+
+  const rareteSelectionnees = Array.from(document.querySelectorAll(".filtre-rarete:checked"))
+    .map(input => input.value);
  
   const personnagesFiltres = personnages.filter(personnage => {
     const filtreElementOK =
@@ -46,8 +49,13 @@ function afficherPersonnages(personnages, profil) {
  
     const filtreArmeOK =
       armesSelectionnees.length === 0 || armesSelectionnees.includes(personnage.arme);
+
+    const filtreRareteOK =
+      rareteSelectionnees.length === 0 || rareteSelectionnees.includes(personnage.rarete);
+    
+
  
-    return filtreElementOK && filtreArmeOK;
+    return filtreElementOK && filtreArmeOK && filtreRareteOK;
   });
  
   personnagesFiltres.forEach(personnage => {
@@ -62,11 +70,11 @@ function creerCartePersonnage(personnage, valeurEnregistree = -1) {
  
   let fond = "";
   if (personnage.rarete === "5") {
-    fond = "DB/images/others/bg_5_star.png";
+    fond = "DB/images/others/bg_5_star.webp";
   } else if (personnage.rarete === "3") {
-    fond = "DB/images/others/bg_3_star.png";
+    fond = "DB/images/others/bg_3_star.webp";
   } else {
-    fond = "DB/images/others/bg_4_star.png";
+    fond = "DB/images/others/bg_4_star.webp";
   }
  
   const imageElement = iconesElements[personnage.element] || "";
@@ -108,7 +116,7 @@ async function initialiserPage() {
  
   afficherPersonnages(personnages, profil);
   
-  document.querySelectorAll(".filtre-element, .filtre-arme").forEach(input => {
+  document.querySelectorAll(".filtre-element, .filtre-arme, .filtre-rarete").forEach(input => {
     input.addEventListener("change", () => {
       afficherPersonnages(personnages, profil);
     });

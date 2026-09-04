@@ -355,7 +355,7 @@ def save_crops(img: Image.Image, cells, out_dir: Path):
         x0, y0, x1, y1 = cell["bbox"]
         crop = img.crop((x0, y0, x1, y1))
  
-        filename = f"{cell['column']}_box_{cell['index']:03d}.png"
+        filename = f"{cell['column']}_box_{cell['index']:03d}.webp"
         crop.save(out_dir / filename)
  
         item = dict(cell)
@@ -421,7 +421,7 @@ def save_results(image_path: str, output_root: str = "output_gray_runs"):
     right_saved = save_crops(img, analysis["right_cells"], right_dir)
  
     debug_img = build_debug_overlay(img, analysis)
-    debug_img.save(out_dir / "debug_overlay.png")
+    debug_img.save(out_dir / "debug_overlay.webp")
  
     # Fichiers texte simples
     with open(out_dir / "left_runs.json", "w", encoding="utf-8") as f:

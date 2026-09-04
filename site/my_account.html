@@ -21,6 +21,23 @@
       border: 2px solid rgba(255, 255, 255, 0.5);
       background-color: rgba(255, 255, 255, 0.12);
     }
+  
+    .filtre-texte input {
+      display: none;
+    }
+  
+    .filtre-texte span {
+      display: inline-block;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+  
+    .filtre-texte input:checked + span {
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.12);
+    }
   </style>
 
   <body style="background-color: #1e1e1e; color: white;">
@@ -56,13 +73,13 @@
 
     <div>
     <strong>Éléments :</strong>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="pyro"><img src="DB/images/others/pyro.png" alt="Pyro" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="hydro"><img src="DB/images/others/hydro.png" alt="hydro" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="electro"><img src="DB/images/others/electro.png" alt="electro" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="cryo"><img src="DB/images/others/cryo.png" alt="cryo" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="anemo"><img src="DB/images/others/anemo.png" alt="anemo" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="geo"><img src="DB/images/others/geo.png" alt="geo" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="dendro"><img src="DB/images/others/dendro.png" alt="dendro" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="pyro"><img src="DB/images/others/pyro.webp" alt="Pyro" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="hydro"><img src="DB/images/others/hydro.webp" alt="hydro" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="electro"><img src="DB/images/others/electro.webp" alt="electro" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="cryo"><img src="DB/images/others/cryo.webp" alt="cryo" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="anemo"><img src="DB/images/others/anemo.webp" alt="anemo" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="geo"><img src="DB/images/others/geo.webp" alt="geo" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="dendro"><img src="DB/images/others/dendro.webp" alt="dendro" width="30"></label>
  
     </div>
 
@@ -70,11 +87,17 @@
 
     <div>
     <strong>Armes :</strong>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="sword"><img src="DB/images/others/sword.png" alt="sword" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="claymore"><img src="DB/images/others/claymore.png" alt="claymore" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="polearm"><img src="DB/images/others/polearm.png" alt="polearm" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="bow"><img src="DB/images/others/bow.png" alt="bow" width="30"></label>
-    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="catalyst"><img src="DB/images/others/catalyst.png" alt="catalyst" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="sword"><img src="DB/images/others/sword.webp" alt="sword" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="claymore"><img src="DB/images/others/claymore.webp" alt="claymore" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="polearm"><img src="DB/images/others/polearm.webp" alt="polearm" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="bow"><img src="DB/images/others/bow.webp" alt="bow" width="30"></label>
+    <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="catalyst"><img src="DB/images/others/catalyst.webp" alt="catalyst" width="30"></label>
+    </div>
+
+    <div>
+    <strong>Rareté :</strong>
+    <label class="filtre-texte"><input type="checkbox" class="filtre-rarete" value="4"><span>4★</span></label>
+    <label class="filtre-texte"><input type="checkbox" class="filtre-rarete" value="5"><span>5★</span></label>
     </div>
 
     <br>
