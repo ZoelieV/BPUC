@@ -8,6 +8,14 @@ const iconesElements = {
   geo: "DB/images/others/geo.webp"
 };
  
+const iconesTypesArmes = {
+  sword: "DB/images/others/sword.webp",
+  claymore: "DB/images/others/claymore.webp",
+  polearm: "DB/images/others/polearm.webp",
+  bow: "DB/images/others/bow.webp",
+  catalyst: "DB/images/others/catalyst.webp"
+};
+ 
 const nomsBoxes = {
   full: "Full box",
   stuff: "Personnages stuff",
@@ -18,6 +26,21 @@ const nomsBoxes = {
   opti5: "Box optimisée 5"
 };
  
+const configCollections = {
+  characters: {
+    pointsField: "PPC",
+    labels: ["C0", "C1", "C2", "C3", "C4", "C5", "C6"],
+    maxLevel: 6,
+    nomVue: "Personnages"
+  },
+  weapons: {
+    pointsField: "PPW",
+    labels: ["R1", "R2", "R3", "R4", "R5"],
+    maxLevel: 4,
+    nomVue: "Armes"
+  }
+};
+ 
 async function chargerPersonnages() {
   const reponse = await fetch("DB/characters.json");
   if (!reponse.ok) {
@@ -26,18 +49,36 @@ async function chargerPersonnages() {
   return await reponse.json();
 }
  
+async function chargerArmes() {
+  const reponse = await fetch("DB/weapons.json");
+  if (!reponse.ok) {
+    throw new Error("Impossible de charger DB/weapons.json");
+  }
+  return await reponse.json();
+}
+ 
+function creerSelectionsParDefaut() {
+  return {
+    stuff: {},
+    opti1: {},
+    opti2: {},
+    opti3: {},
+    opti4: {},
+    opti5: {}
+  };
+}
+ 
 function creerProfilParDefaut() {
   return {
     uid: "",
     theatre: "",
-    fullBox: {},
-    selections: {
-      stuff: {},
-      opti1: {},
-      opti2: {},
-      opti3: {},
-      opti4: {},
-      opti5: {}
+    characters: {
+      full: {},
+      selections: creerSelectionsParDefaut()
+    },
+    weapons: {
+      full: {},
+      selections: creerSelectionsParDefaut()
     }
   };
 }
@@ -51,22 +92,32 @@ function chargerProfil() {
  
   const profil = JSON.parse(profilSauvegarde);
  
-  if (!profil.fullBox) {
-    profil.fullBox = profil.personnages || {};
-  }
- 
-  if (!profil.selections) {
-    profil.selections = {
-      stuff: {},
-      opti1: {},
-      opti2: {},
-      opti3: {},
-      opti4: {},
-      opti5: {}
+  if (!profil.characters) {
+    profil.characters = {
+      full: profil.fullBox || profil.personnages || {},
+      selections: profil.selections || creerSelectionsParDefaut()
     };
   }
  
+  if (!profil.weapons) {
+    profil.weapons = {
+      full: {},
+      selections: creerSelectionsParDefaut()
+    };
+  }
+ 
+  if (!profil.characters.selections) {
+    profil.characters.selections = creerSelectionsParDefaut();
+  }
+ 
+  if (!profil.weapons.selections) {
+    profil.weapons.selections = creerSelectionsParDefaut();
+  }
+ 
+  delete profil.fullBox;
   delete profil.personnages;
+  delete profil.selections;
+ 
   return profil;
 }
  
@@ -84,6 +135,16 @@ function setBoxActive(box) {
   });
 }
  
+function getVueActive() {
+  return document.querySelector(".view-btn.active")?.dataset.view || "characters";
+}
+ 
+function setVueActive(view) {
+  document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.view === view);
+  });
+}
+ 
 function getFondRarete(rarete) {
   const valeur = String(rarete);
  
@@ -98,12 +159,25 @@ function getFondRarete(rarete) {
   return "DB/images/others/bg_4_star.webp";
 }
  
-function getPPC(personnage, constellation) {
-  if (constellation < 0) {
+function getConfigCollection(vueActive) {
+  return configCollections[vueActive];
+}
+ 
+function getCollectionProfil(profil, vueActive) {
+  return profil[vueActive];
+}
+ 
+function getListeActive(personnages, armes) {
+  return getVueActive() === "characters" ? personnages : armes;
+}
+ 
+function getPPC(item, valeur, vueActive) {
+  if (valeur < 0) {
     return "";
   }
  
-  return personnage.PPC?.[constellation] ?? "";
+  const config = getConfigCollection(vueActive);
+  return item[config.pointsField]?.[valeur] ?? "";
 }
  
 function creerBadgePPC(valeur) {
@@ -113,58 +187,76 @@ function creerBadgePPC(valeur) {
   return badge;
 }
  
-function creerCartePersonnage(personnage, constellation = -1, boxActive = "full", selectionne = false) {
+function getTypeValeur(item, vueActive) {
+  return vueActive === "characters" ? item.arme : item.type;
+}
+ 
+function getIconeItem(item, vueActive) {
+  if (vueActive === "characters") {
+    return iconesElements[item.element] || "";
+  }
+ 
+  return iconesTypesArmes[item.type] || "";
+}
+ 
+function creerCarteItem(item, valeur = -1, boxActive = "full", selectionne = false, vueActive = "characters") {
+  const config = getConfigCollection(vueActive);
   const conteneur = document.createElement("div");
   conteneur.className = "carte-personnage";
  
-  const fond = getFondRarete(personnage.rarete);
-  const imageElement = iconesElements[personnage.element] || "";
-  const affichageConstellation = constellation < 0 ? "-" : `C${constellation}`;
+  const fond = getFondRarete(item.rarete);
+  const icone = getIconeItem(item, vueActive);
+  const affichageNiveau = valeur < 0 ? "-" : config.labels[valeur];
+ 
+  const classeSelectionnable = boxActive === "full" ? "" : "selectionnable";
+  const classeSelectionnee = boxActive !== "full" && selectionne ? "selectionnee" : "";
  
   const opacite = boxActive === "full"
-    ? (constellation < 0 ? "0.4" : "1")
+    ? (valeur < 0 ? "0.4" : "1")
     : (selectionne ? "1" : "0.45");
+ 
+  const infoNiveau = boxActive === "full"
+    ? ""
+    : `<div class="info-constellation">${affichageNiveau}</div>`;
  
   const zoneAction = boxActive === "full"
     ? `
 <div class="controle-constellation">
-<button type="button" class="constellation-btn moins-btn" data-id="${personnage.id}">-</button>
-<span>${affichageConstellation}</span>
-<button type="button" class="constellation-btn plus-btn" data-id="${personnage.id}">+</button>
+<button type="button" class="constellation-btn moins-btn" data-id="${item.id}">-</button>
+<span class="info-constellation">${affichageNiveau}</span>
+<button type="button" class="constellation-btn plus-btn" data-id="${item.id}">+</button>
 </div>
     `
-    : `
-<label class="toggle-box-label">
-<input type="checkbox" class="switch-box" data-id="${personnage.id}" ${selectionne ? "checked" : ""}>
-        Dans la box
-</label>
-    `;
+    : "";
  
   conteneur.innerHTML = `
-<div class="visuel-personnage" style="background-image: url('${fond}'); opacity: ${opacite};">
-<img class="image-personnage" src="DB/${personnage.image}" alt="${personnage.nom}">
-      ${imageElement ? `<img class="icone-element" src="${imageElement}" alt="${personnage.element}">` : ""}
+<div class="visuel-personnage ${classeSelectionnable} ${classeSelectionnee}" data-id="${item.id}" style="background-image: url('${fond}'); opacity: ${opacite};">
+<img class="image-personnage" src="DB/${item.image}" alt="${item.nom}">
+      ${icone ? `<img class="icone-element" src="${icone}" alt="">` : ""}
 </div>
  
-    <div class="nom-personnage">${personnage.nom}</div>
-<div class="info-constellation">${affichageConstellation}</div>
+    <div class="nom-personnage">${item.nom}</div>
+    ${infoNiveau}
     ${zoneAction}
   `;
  
-  if (constellation >= 0) {
+  if (valeur >= 0) {
     conteneur.querySelector(".visuel-personnage").appendChild(
-      creerBadgePPC(getPPC(personnage, constellation))
+      creerBadgePPC(getPPC(item, valeur, vueActive))
     );
   }
  
   return conteneur;
 }
  
-function afficherPersonnages(personnages, profil) {
-  const liste = document.getElementById("liste-personnages");
+function afficherCollection(personnages, armes, profil) {
+  const liste = document.getElementById("liste-collection");
   liste.innerHTML = "";
  
+  const vueActive = getVueActive();
   const boxActive = getBoxActive();
+  const items = getListeActive(personnages, armes);
+  const collectionProfil = getCollectionProfil(profil, vueActive);
  
   const elementsSelectionnes = Array.from(document.querySelectorAll(".filtre-element:checked"))
     .map(input => input.value);
@@ -175,143 +267,165 @@ function afficherPersonnages(personnages, profil) {
   const rareteSelectionnees = Array.from(document.querySelectorAll(".filtre-rarete:checked"))
     .map(input => input.value);
  
-  const personnagesFiltres = personnages.filter(personnage => {
+  const itemsFiltres = items.filter(item => {
+    const typeValeur = getTypeValeur(item, vueActive);
+    const rareteValeur = item.rarete != null ? String(item.rarete) : "";
+ 
     const filtreElementOK =
-      elementsSelectionnes.length === 0 || elementsSelectionnes.includes(personnage.element);
+      elementsSelectionnes.length === 0 || elementsSelectionnes.includes(item.element);
  
     const filtreArmeOK =
-      armesSelectionnees.length === 0 || armesSelectionnees.includes(personnage.arme);
+      armesSelectionnees.length === 0 || armesSelectionnees.includes(typeValeur);
  
     const filtreRareteOK =
-      rareteSelectionnees.length === 0 || rareteSelectionnees.includes(String(personnage.rarete));
+      rareteSelectionnees.length === 0 ||
+      rareteValeur === "" ||
+      rareteSelectionnees.includes(rareteValeur);
  
-    if (boxActive !== "full" && (profil.fullBox[personnage.id] ?? -1) < 0) {
+    if (boxActive !== "full" && (collectionProfil.full[item.id] ?? -1) < 0) {
       return false;
     }
  
     return filtreElementOK && filtreArmeOK && filtreRareteOK;
   });
  
-  personnagesFiltres.forEach(personnage => {
-    const constellation = profil.fullBox[personnage.id] ?? -1;
+  itemsFiltres.forEach(item => {
+    const valeur = collectionProfil.full[item.id] ?? -1;
     const selectionne = boxActive === "full"
-      ? constellation >= 0
-      : !!profil.selections[boxActive][personnage.id];
+      ? valeur >= 0
+      : !!collectionProfil.selections[boxActive][item.id];
  
-    const carte = creerCartePersonnage(personnage, constellation, boxActive, selectionne);
+    const carte = creerCarteItem(item, valeur, boxActive, selectionne, vueActive);
     liste.appendChild(carte);
   });
 }
  
-function mettreAJourTotalBox(personnages, profil) {
+function mettreAJourTotalBox(personnages, armes, profil) {
+  const vueActive = getVueActive();
   const boxActive = getBoxActive();
+  const items = getListeActive(personnages, armes);
+  const collectionProfil = getCollectionProfil(profil, vueActive);
+  const config = getConfigCollection(vueActive);
+ 
   let total = 0;
  
-  personnages.forEach(personnage => {
-    const constellation = profil.fullBox[personnage.id] ?? -1;
+  items.forEach(item => {
+    const valeur = collectionProfil.full[item.id] ?? -1;
  
-    if (constellation < 0) {
+    if (valeur < 0) {
       return;
     }
  
     const inclus = boxActive === "full"
       ? true
-      : !!profil.selections[boxActive][personnage.id];
+      : !!collectionProfil.selections[boxActive][item.id];
  
     if (inclus) {
-      total += Number(personnage.PPC?.[constellation] ?? 0);
+      total += Number(item[config.pointsField]?.[valeur] ?? 0);
     }
   });
  
-  document.getElementById("box-total-label").textContent = nomsBoxes[boxActive];
+  document.getElementById("box-total-label").textContent = `${nomsBoxes[boxActive]} - ${config.nomVue}`;
   document.getElementById("total-ppc").textContent = total;
 }
  
 async function initialiserPage() {
   try {
-    const personnages = await chargerPersonnages();
+    const [personnages, armes] = await Promise.all([
+      chargerPersonnages(),
+      chargerArmes()
+    ]);
+ 
     const profil = chargerProfil();
  
     document.getElementById("uid").value = profil.uid || "";
     document.getElementById("theatre").value = profil.theatre || "";
  
     setBoxActive("full");
-    afficherPersonnages(personnages, profil);
-    mettreAJourTotalBox(personnages, profil);
+    setVueActive("characters");
+ 
+    afficherCollection(personnages, armes, profil);
+    mettreAJourTotalBox(personnages, armes, profil);
  
     document.querySelectorAll(".filtre-element, .filtre-arme, .filtre-rarete").forEach(input => {
       input.addEventListener("change", () => {
-        afficherPersonnages(personnages, profil);
-        mettreAJourTotalBox(personnages, profil);
+        afficherCollection(personnages, armes, profil);
+        mettreAJourTotalBox(personnages, armes, profil);
       });
     });
  
     document.querySelectorAll(".box-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         setBoxActive(btn.dataset.box);
-        afficherPersonnages(personnages, profil);
-        mettreAJourTotalBox(personnages, profil);
+        afficherCollection(personnages, armes, profil);
+        mettreAJourTotalBox(personnages, armes, profil);
       });
     });
  
-    const liste = document.getElementById("liste-personnages");
- 
-    liste.addEventListener("click", event => {
-      if (getBoxActive() !== "full") {
-        return;
-      }
- 
-      const boutonMoins = event.target.closest(".moins-btn");
-      const boutonPlus = event.target.closest(".plus-btn");
- 
-      if (!boutonMoins && !boutonPlus) {
-        return;
-      }
- 
-      const id = (boutonMoins || boutonPlus).dataset.id;
-      let valeur = profil.fullBox[id] ?? -1;
- 
-      if (boutonPlus) {
-        valeur = valeur === 6 ? -1 : valeur + 1;
-      }
- 
-      if (boutonMoins) {
-        valeur = valeur === -1 ? 6 : valeur - 1;
-      }
- 
-      profil.fullBox[id] = valeur;
- 
-      if (valeur < 0) {
-        Object.keys(profil.selections).forEach(box => {
-          delete profil.selections[box][id];
-        });
-      }
- 
-      afficherPersonnages(personnages, profil);
-      mettreAJourTotalBox(personnages, profil);
+    document.querySelectorAll(".view-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        setVueActive(btn.dataset.view);
+        afficherCollection(personnages, armes, profil);
+        mettreAJourTotalBox(personnages, armes, profil);
+      });
     });
  
-    liste.addEventListener("change", event => {
-      const switchBox = event.target.closest(".switch-box");
+    const liste = document.getElementById("liste-collection");
  
-      if (!switchBox) {
-        return;
-      }
- 
+    liste.addEventListener("click", event => {
+      const vueActive = getVueActive();
       const boxActive = getBoxActive();
+      const items = getListeActive(personnages, armes);
+      const collectionProfil = getCollectionProfil(profil, vueActive);
+      const config = getConfigCollection(vueActive);
  
       if (boxActive === "full") {
+        const boutonMoins = event.target.closest(".moins-btn");
+        const boutonPlus = event.target.closest(".plus-btn");
+ 
+        if (!boutonMoins && !boutonPlus) {
+          return;
+        }
+ 
+        const id = (boutonMoins || boutonPlus).dataset.id;
+        let valeur = collectionProfil.full[id] ?? -1;
+ 
+        if (boutonPlus) {
+          valeur = valeur === config.maxLevel ? -1 : valeur + 1;
+        }
+ 
+        if (boutonMoins) {
+          valeur = valeur === -1 ? config.maxLevel : valeur - 1;
+        }
+ 
+        collectionProfil.full[id] = valeur;
+ 
+        if (valeur < 0) {
+          Object.keys(collectionProfil.selections).forEach(box => {
+            delete collectionProfil.selections[box][id];
+          });
+        }
+ 
+        afficherCollection(personnages, armes, profil);
+        mettreAJourTotalBox(personnages, armes, profil);
         return;
       }
  
-      if (switchBox.checked) {
-        profil.selections[boxActive][switchBox.dataset.id] = true;
-      } else {
-        delete profil.selections[boxActive][switchBox.dataset.id];
+      const visuel = event.target.closest(".visuel-personnage[data-id]");
+      if (!visuel) {
+        return;
       }
  
-      afficherPersonnages(personnages, profil);
-      mettreAJourTotalBox(personnages, profil);
+      const id = visuel.dataset.id;
+ 
+      if (collectionProfil.selections[boxActive][id]) {
+        delete collectionProfil.selections[boxActive][id];
+      } else {
+        collectionProfil.selections[boxActive][id] = true;
+      }
+ 
+      afficherCollection(personnages, armes, profil);
+      mettreAJourTotalBox(personnages, armes, profil);
     });
  
     document.getElementById("profil-form").addEventListener("submit", event => {

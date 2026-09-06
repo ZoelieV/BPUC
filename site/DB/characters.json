@@ -5,8 +5,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/amber.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "kaeya",
@@ -14,8 +15,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/kaeya.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 10]
+    "PPC": [5, 5, 5, 5, 5, 5, 10, 0, 0]
   },
   {
     "id": "lisa",
@@ -23,8 +25,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/lisa.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "barbara",
@@ -32,8 +35,9 @@
     "rarete": "4",
     "element": "hydro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/barbara.webp",
-    "PPC": [10, 10, 10, 10, 10, 10, 10]
+    "PPC": [10, 10, 10, 10, 10, 10, 10, 0, 0]
   },
   {
       "id": "razor",
@@ -41,8 +45,9 @@
       "rarete": "4",
       "element": "electro",
       "arme": "claymore",
+      "categorie": "dps",
       "image": "images/characters/razor.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 10]
+    "PPC": [5, 5, 5, 5, 5, 5, 10, 0, 0]
   },
   {
     "id": "xiangling",
@@ -50,8 +55,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "polearm",
+    "categorie": "subdps",
     "image": "images/characters/xiangling.webp",
-    "PPC": [25, 30, 30, 30, 35, 35, 35]
+    "PPC": [25, 30, 30, 30, 35, 35, 35, 0, 0]
   },
   {
     "id": "beidou",
@@ -59,8 +65,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "claymore",
+    "categorie": "support",
     "image": "images/characters/beidou.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 10]
+    "PPC": [5, 5, 5, 5, 5, 5, 10, 0, 0]
   },
   {
     "id": "xingqiu",
@@ -68,8 +75,9 @@
     "rarete": "4",
     "element": "hydro",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/xingqiu.webp",
-    "PPC": [35, 35, 45, 50, 50, 50, 70]
+    "PPC": [35, 35, 45, 50, 50, 50, 70, 0, 0]
   },
   {
     "id": "ningguang",
@@ -77,8 +85,9 @@
     "rarete": "4",
     "element": "geo",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/ningguang.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "fischl",
@@ -86,8 +95,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "bow",
+    "categorie": "subdps",
     "image": "images/characters/fischl.webp",
-    "PPC": [50, 50, 50, 55, 55, 55, 65]
+    "PPC": [50, 50, 50, 55, 55, 55, 65, 0, 0]
   },
   {
     "id": "bennett",
@@ -95,8 +105,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/bennett.webp",
-    "PPC": [50, 55, 55, 55, 55, 60, 65]
+    "PPC": [50, 55, 55, 55, 55, 60, 65, 0, 0]
   },
   {
     "id": "noelle",
@@ -104,8 +115,9 @@
     "rarete": "4",
     "element": "geo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/noelle.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 10]
+    "PPC": [5, 5, 5, 5, 5, 5, 10, 0, 0]
   },
   {
     "id": "chongyun",
@@ -113,8 +125,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/chongyun.webp",
-    "PPC": [5, 5, 10, 10, 10, 10, 15]
+    "PPC": [5, 5, 10, 10, 10, 10, 15, 0, 0]
   },
   {
     "id": "sucrose",
@@ -122,8 +135,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/sucrose.webp",
-    "PPC": [75, 75, 75, 75, 75, 75, 75]
+    "PPC": [75, 75, 75, 75, 75, 75, 75, 0, 0]
   },
   {
     "id": "jean",
@@ -131,8 +145,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/jean.webp",
-    "PPC": [10, 10, 10, 10, 15, 15, 15]
+    "PPC": [10, 10, 10, 10, 15, 15, 15, 0, 0]
   },
   {
     "id": "diluc",
@@ -140,8 +155,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/diluc.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "qiqi",
@@ -149,8 +165,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/qiqi.webp",
-    "PPC": [15, 15, 15, 15, 15, 15, 15]
+    "PPC": [15, 15, 15, 15, 15, 15, 15, 0, 0]
   },
   {
     "id": "mona",
@@ -158,8 +175,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/mona.webp",
-    "PPC": [45, 50, 55, 55, 60, 60, 60]
+    "PPC": [45, 50, 55, 55, 60, 60, 60, 0, 0]
   },
   {
     "id": "keqing",
@@ -167,8 +185,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/keqing.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "venti",
@@ -176,8 +195,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "bow",
+    "categorie": "subdps",
     "image": "images/characters/venti.webp",
-    "PPC": [20, 25, 85, 95, 120, 130, 200]
+    "PPC": [20, 25, 85, 95, 120, 130, 200, 0, 0]
   },
   {
     "id": "klee",
@@ -185,8 +205,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/klee.webp",
-    "PPC": [50, 55, 100, 105, 110, 115, 120]
+    "PPC": [50, 55, 100, 105, 110, 115, 120, 0, 0]
   },
   {
     "id": "diona",
@@ -194,8 +215,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "bow",
+    "categorie": "support",
     "image": "images/characters/diona.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 15]
+    "PPC": [5, 5, 5, 5, 5, 5, 15, 0, 0]
   },
   {
     "id": "tartaglia",
@@ -203,8 +225,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/tartaglia.webp",
-    "PPC": [15, 20, 20, 25, 25, 25, 30]
+    "PPC": [15, 20, 20, 25, 25, 25, 30, 0, 0]
   },
   {
     "id": "xinyan",
@@ -212,8 +235,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "claymore",
+    "categorie": "support",
     "image": "images/characters/xinyan.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "zhongli",
@@ -221,8 +245,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/zhongli.webp",
-    "PPC": [20, 25, 25, 25, 25, 25, 25]
+    "PPC": [20, 25, 25, 25, 25, 25, 25, 0, 0]
   },
   {
     "id": "albedo",
@@ -230,8 +255,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/albedo.webp",
-    "PPC": [60, 65, 70, 75, 80, 80, 95]
+    "PPC": [60, 65, 70, 75, 80, 80, 95, 0, 0]
   },
   {
     "id": "ganyu",
@@ -239,8 +265,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "bow",
+    "categorie": "subdps",
     "image": "images/characters/ganyu.webp",
-    "PPC": [15, 20, 20, 25, 30, 30, 85]
+    "PPC": [15, 20, 20, 25, 30, 30, 85, 0, 0]
   },
   {
     "id": "xiao",
@@ -248,8 +275,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "polearm",
+    "categorie": "dps",
     "image": "images/characters/xiao.webp",
-    "PPC": [10, 15, 15, 15, 15, 15, 15]
+    "PPC": [10, 15, 15, 15, 15, 15, 15, 0, 0]
   },
   {
     "id": "hutao",
@@ -257,8 +285,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "polearm",
+    "categorie": "dps",
     "image": "images/characters/hutao.webp",
-    "PPC": [15, 40, 45, 55, 55, 65, 85]
+    "PPC": [15, 40, 45, 55, 55, 65, 85, 0, 0]
   },
   {
     "id": "rosaria",
@@ -266,8 +295,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/rosaria.webp",
-    "PPC": [5, 5, 10, 10, 10, 10, 10]
+    "PPC": [5, 5, 10, 10, 10, 10, 10, 0, 0]
   },
   {
     "id": "yanfei",
@@ -275,8 +305,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/yanfei.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "eula",
@@ -284,8 +315,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/eula.webp",
-    "PPC": [5, 10, 10, 55, 55, 55, 75]
+    "PPC": [5, 10, 10, 55, 55, 55, 75, 0, 0]
   },
   {
     "id": "kazuha",
@@ -293,8 +325,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/kazuha.webp",
-    "PPC": [55, 55, 65, 65, 65, 65, 90]
+    "PPC": [55, 55, 65, 65, 65, 65, 90, 0, 0]
   },
   {
     "id": "ayaya",
@@ -302,8 +335,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/ayaya.webp",
-    "PPC": [20, 20, 25, 30, 90, 90, 95]
+    "PPC": [20, 20, 25, 30, 90, 90, 95, 0, 0]
   },
   {
     "id": "sayu",
@@ -311,8 +345,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "claymore",
+    "categorie": "support",
     "image": "images/characters/sayu.webp",
-    "PPC": [10, 10, 10, 10, 10, 10, 10]
+    "PPC": [10, 10, 10, 10, 10, 10, 10, 0, 0]
   },
   {
     "id": "yoimiya",
@@ -320,8 +355,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/yoimiya.webp",
-    "PPC": [15, 15, 20, 20, 20, 20, 30]
+    "PPC": [15, 15, 20, 20, 20, 20, 30, 0, 0]
   },
   {
     "id": "aloy",
@@ -329,8 +365,9 @@
     "rarete": "3",
     "element": "cryo",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/aloy.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "sara",
@@ -338,8 +375,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "bow",
+    "categorie": "support",
     "image": "images/characters/sara.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 10]
+    "PPC": [5, 5, 5, 5, 5, 5, 10, 0, 0]
   },
   {
     "id": "raiden",
@@ -347,8 +385,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "polearm",
+    "categorie": "dps",
     "image": "images/characters/raiden.webp",
-    "PPC": [50, 50, 85, 90, 90, 90, 90]
+    "PPC": [50, 50, 85, 90, 90, 90, 90, 0, 0]
   },
   {
     "id": "kokomi",
@@ -356,8 +395,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/kokomi.webp",
-    "PPC": [15, 20, 20, 20, 20, 20, 30]
+    "PPC": [15, 20, 20, 20, 20, 20, 30, 0, 0]
   },
   {
     "id": "thoma",
@@ -365,8 +405,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/thoma.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "gorou",
@@ -374,8 +415,9 @@
     "rarete": "4",
     "element": "geo",
     "arme": "bow",
+    "categorie": "support",
     "image": "images/characters/gorou.webp",
-    "PPC": [10, 10, 10, 10, 10, 10, 15]
+    "PPC": [10, 10, 10, 10, 10, 10, 15, 0, 0]
   },
   {
     "id": "itto",
@@ -383,8 +425,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/itto.webp",
-    "PPC": [10, 15, 40, 40, 45, 50, 70]
+    "PPC": [10, 15, 40, 40, 45, 50, 70, 0, 0]
   },
   {
     "id": "yunjin",
@@ -392,8 +435,9 @@
     "rarete": "4",
     "element": "geo",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/yunjin.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "shenhe",
@@ -401,8 +445,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/shenhe.webp",
-    "PPC": [40, 45, 50, 55, 55, 55, 85]
+    "PPC": [40, 45, 50, 55, 55, 55, 85, 0, 0]
   },
   {
     "id": "yae",
@@ -410,8 +455,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "catalyst",
+    "categorie": "subdps",
     "image": "images/characters/yae.webp",
-    "PPC": [80, 95, 120, 125, 130, 130, 165]
+    "PPC": [80, 95, 120, 125, 130, 130, 165, 0, 0]
   },
   {
     "id": "ayato",
@@ -419,8 +465,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/ayato.webp",
-    "PPC": [25, 25, 35, 40, 45, 50, 60]
+    "PPC": [25, 25, 35, 40, 45, 50, 60, 0, 0]
   },
   {
     "id": "yelan",
@@ -428,8 +475,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "bow",
+    "categorie": "subdps",
     "image": "images/characters/yelan.webp",
-    "PPC": [75, 85, 130, 145, 150, 155, 225]
+    "PPC": [75, 85, 130, 145, 150, 155, 225, 0, 0]
   },
   {
     "id": "kuki",
@@ -437,8 +485,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/kuki.webp",
-    "PPC": [50, 50, 50, 50, 50, 50, 50]
+    "PPC": [50, 50, 50, 50, 50, 50, 50, 0, 0]
   },
   {
     "id": "heizou",
@@ -446,8 +495,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/heizou.webp",
-    "PPC": [15, 15, 15, 15, 15, 15, 15]
+    "PPC": [15, 15, 15, 15, 15, 15, 15, 0, 0]
   },
   {
     "id": "collei",
@@ -455,8 +505,9 @@
     "rarete": "4",
     "element": "dendro",
     "arme": "bow",
+    "categorie": "support",
     "image": "images/characters/collei.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "tighnari",
@@ -464,8 +515,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/tighnari.webp",
-    "PPC": [35, 35, 40, 40, 50, 50, 80]
+    "PPC": [35, 35, 40, 40, 50, 50, 80, 0, 0]
   },
   {
     "id": "dori",
@@ -473,8 +525,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/dori.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "candace",
@@ -482,8 +535,9 @@
     "rarete": "4",
     "element": "hydro",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/candace.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 10]
+    "PPC": [5, 5, 5, 5, 5, 5, 10, 0, 0]
   },
   {
     "id": "cyno",
@@ -491,8 +545,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "polearm",
+    "categorie": "dps",
     "image": "images/characters/cyno.webp",
-    "PPC": [75, 85, 100, 105, 120, 120, 250]
+    "PPC": [75, 85, 100, 105, 120, 120, 250, 0, 0]
   },
   {
     "id": "nilou",
@@ -500,8 +555,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/nilou.webp",
-    "PPC": [10, 15, 50, 50, 50, 50, 75]
+    "PPC": [10, 15, 50, 50, 50, 50, 75, 0, 0]
   },
   {
     "id": "nahida",
@@ -509,8 +565,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "catalyst",
+    "categorie": "subdps",
     "image": "images/characters/nahida.webp",
-    "PPC": [50, 55, 95, 100, 105, 110, 145]
+    "PPC": [50, 55, 95, 100, 105, 110, 145, 0, 0]
   },
   {
     "id": "layla",
@@ -518,8 +575,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/layla.webp",
-    "PPC": [5, 5, 5, 5, 10, 10, 10]
+    "PPC": [5, 5, 5, 5, 10, 10, 10, 0, 0]
   },
   {
     "id": "faruzan",
@@ -527,8 +585,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "bow",
+    "categorie": "support",
     "image": "images/characters/faruzan.webp",
-    "PPC": [15, 15, 15, 15, 15, 15, 20]
+    "PPC": [15, 15, 15, 15, 15, 15, 20, 0, 0]
   },
   {
     "id": "wanderer",
@@ -536,8 +595,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/wanderer.webp",
-    "PPC": [10, 15, 40, 75, 80, 85, 125]
+    "PPC": [10, 15, 40, 75, 80, 85, 125, 0, 0]
   },
   {
     "id": "yaoyao",
@@ -545,8 +605,9 @@
     "rarete": "4",
     "element": "dendro",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/yaoyao.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "alhaitham",
@@ -554,8 +615,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/alhaitham.webp",
-    "PPC": [35, 35, 45, 50, 55, 60, 70]
+    "PPC": [35, 35, 45, 50, 55, 60, 70, 0, 0]
   },
   {
     "id": "dehya",
@@ -563,8 +625,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/dehya.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 10]
+    "PPC": [5, 5, 5, 5, 5, 5, 10, 0, 0]
   },
   {
     "id": "mika",
@@ -572,8 +635,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/mika.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "kaveh",
@@ -581,8 +645,9 @@
     "rarete": "4",
     "element": "dendro",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/kaveh.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "baizhu",
@@ -590,8 +655,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/baizhu.webp",
-    "PPC": [10, 15, 20, 20, 20, 20, 20]
+    "PPC": [10, 15, 20, 20, 20, 20, 20, 0, 0]
   },
   {
     "id": "kirara",
@@ -599,8 +665,9 @@
     "rarete": "4",
     "element": "dendro",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/kirara.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "lynette",
@@ -608,8 +675,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/lynette.webp",
-    "PPC": [5, 5, 5, 5, 5, 5, 5]
+    "PPC": [5, 5, 5, 5, 5, 5, 5, 0, 0]
   },
   {
     "id": "lyney",
@@ -617,8 +685,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/lyney.webp",
-    "PPC": [15, 40, 60, 70, 85, 90, 135]
+    "PPC": [15, 40, 60, 70, 85, 90, 135, 0, 0]
   },
   {
     "id": "freminet",
@@ -626,8 +695,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/freminet.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "neuvillette",
@@ -635,8 +705,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/neuvillette.webp",
-    "PPC": [85, 125, 140, 175, 175, 175, 240]
+    "PPC": [85, 125, 140, 175, 175, 175, 240, 0, 0]
   },
   {
     "id": "wriothesley",
@@ -644,8 +715,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/wrio.webp",
-    "PPC": [90, 100, 145, 175, 195, 200, 275]
+    "PPC": [90, 100, 145, 175, 195, 200, 275, 0, 0]
   },
   {
     "id": "charlotte",
@@ -653,8 +725,9 @@
     "rarete": "4",
     "element": "cryo",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/charlotte.webp",
-    "PPC": [15, 15, 15, 15, 15, 15, 15]
+    "PPC": [15, 15, 15, 15, 15, 15, 15, 0, 0]
     },
   {
     "id": "fufu",
@@ -662,8 +735,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/fufu.webp",
-    "PPC": [95, 120, 150, 165, 170, 195, 265]
+    "PPC": [95, 120, 150, 165, 170, 195, 265, 0, 0]
   },
   {
     "id": "navia",
@@ -671,8 +745,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/navia.webp",
-    "PPC": [85, 90, 110, 120, 130, 135, 190]
+    "PPC": [85, 90, 110, 120, 130, 135, 190, 0, 0]
   },
   {
     "id": "chevreuse",
@@ -680,8 +755,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/chevreuse.webp",
-    "PPC": [35, 35, 35, 35, 35, 35, 45]
+    "PPC": [35, 35, 35, 35, 35, 35, 45, 0, 0]
   },
   {
     "id": "gaming",
@@ -689,8 +765,9 @@
     "rarete": "4",
     "element": "pyro",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/gaming.webp",
-    "PPC": [5, 5, 5, 10, 10, 10, 15]
+    "PPC": [5, 5, 5, 10, 10, 10, 15, 0, 0]
   },
   {
     "id": "xianyun",
@@ -698,8 +775,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/xianyun.webp",
-    "PPC": [35, 45, 55, 65, 65, 65, 100]
+    "PPC": [35, 45, 55, 65, 65, 65, 100, 0, 0]
   },
   {
     "id": "chiori",
@@ -707,8 +785,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/chiori.webp",
-    "PPC": [45, 60, 80, 100, 125, 130, 185]
+    "PPC": [45, 60, 80, 100, 125, 130, 185, 0, 0]
   },
   {
     "id": "arlecchino",
@@ -716,8 +795,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "polearm",
+    "categorie": "dps",
     "image": "images/characters/arlecchino.webp",
-    "PPC": [85, 120, 145, 165, 165, 165, 245]
+    "PPC": [85, 120, 145, 165, 165, 165, 245, 0, 0]
   },
   {
     "id": "sethos",
@@ -725,8 +805,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/sethos.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "clorinde",
@@ -734,8 +815,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/clorinde.webp",
-    "PPC": [60, 75, 100, 115, 135, 145, 215]
+    "PPC": [60, 75, 100, 115, 135, 145, 215, 0, 0]
   },
   {
     "id": "sigewinne",
@@ -743,8 +825,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "bow",
+    "categorie": "support",
     "image": "images/characters/sigewinne.webp",
-    "PPC": [5, 10, 40, 40, 55, 60, 85]
+    "PPC": [5, 10, 40, 40, 55, 60, 85, 0, 0]
   },
   {
     "id": "emilie",
@@ -752,8 +835,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "polearm",
+    "categorie": "subdps",
     "image": "images/characters/emilie.webp",
-    "PPC": [45, 60, 90, 95, 115, 125, 185]
+    "PPC": [45, 60, 90, 95, 115, 125, 185, 0, 0]
   },
   {
     "id": "kachina",
@@ -761,8 +845,9 @@
     "rarete": "4",
     "element": "geo",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/kachina.webp",
-    "PPC": [10, 10, 10, 10, 10, 10, 10]
+    "PPC": [10, 10, 10, 10, 10, 10, 10, 0, 0]
   },
   {
     "id": "mualani",
@@ -770,8 +855,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/mualani.webp",
-    "PPC": [90, 125, 165, 200, 215, 220, 285]
+    "PPC": [90, 125, 165, 200, 215, 220, 285, 0, 0]
   },
   {
     "id": "kinich",
@@ -779,8 +865,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/kinich.webp",
-    "PPC": [90, 115, 155, 200, 210, 215, 260]
+    "PPC": [90, 115, 155, 200, 210, 215, 260, 0, 0]
   },
   {
     "id": "xilonen",
@@ -788,8 +875,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/xilonen.webp",
-    "PPC": [60, 60, 90, 95, 105, 105, 135]
+    "PPC": [60, 60, 90, 95, 105, 105, 135, 0, 0]
   },
   {
     "id": "ororon",
@@ -797,8 +885,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "bow",
+    "categorie": "support",
     "image": "images/characters/ororon.webp",
-    "PPC": [30, 30, 30, 30, 30, 30, 35]
+    "PPC": [30, 30, 30, 30, 30, 30, 35, 0, 0]
   },
   {
     "id": "chasca",
@@ -806,8 +895,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "bow",
+    "categorie": "dps",
     "image": "images/characters/chasca.webp",
-    "PPC": [85, 125, 170, 195, 205, 210, 280]
+    "PPC": [85, 125, 170, 195, 205, 210, 280, 0, 0]
   },
   {
     "id": "citlali",
@@ -815,8 +905,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/citlali.webp",
-    "PPC": [70, 75, 135, 145, 165, 175, 255]
+    "PPC": [70, 75, 135, 145, 165, 175, 255, 0, 0]
   },
   {
     "id": "mavuika",
@@ -824,17 +915,19 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/mavuika.webp",
-    "PPC": [110, 140, 190, 210, 225, 235, 280]
+    "PPC": [110, 140, 190, 210, 225, 235, 280, 0, 0]
   },
   {
     "id": "lanyan",
-    "nom": "Lann Yan",
+    "nom": "Lan Yan",
     "rarete": "4",
     "element": "anemo",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/lanyan.webp",
-    "PPC": [15, 15, 15, 15, 20, 20, 20]
+    "PPC": [15, 15, 15, 15, 20, 20, 20, 0, 0]
   },
   {
     "id": "mizuki",
@@ -842,8 +935,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/mizuki.webp",
-    "PPC": [65, 80, 95, 95, 100, 100, 150]
+    "PPC": [65, 80, 95, 95, 100, 100, 150, 0, 0]
   },
   {
     "id": "iansan",
@@ -851,8 +945,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/iansan.webp",
-    "PPC": [45, 45, 50, 50, 55, 60, 65]
+    "PPC": [45, 45, 50, 50, 55, 60, 65, 0, 0]
   },
   {
     "id": "varesa",
@@ -860,8 +955,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/varesa.webp",
-    "PPC": [95, 110, 170, 165, 185, 195, 280]
+    "PPC": [95, 110, 170, 165, 185, 195, 280, 0, 0]
   },
   {
     "id": "ifa",
@@ -869,8 +965,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/ifa.webp",
-    "PPC": [15, 15, 15, 15, 15, 15, 15]
+    "PPC": [15, 15, 15, 15, 15, 15, 15, 0, 0]
   },
   {
     "id": "escoffier",
@@ -878,8 +975,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "polearm",
+    "categorie": "subdps",
     "image": "images/characters/escoffier.webp",
-    "PPC": [95, 120, 130, 150, 150, 155, 225]
+    "PPC": [95, 120, 130, 150, 150, 155, 225, 0, 0]
   },
   {
     "id": "dahlia",
@@ -887,8 +985,9 @@
     "rarete": "4",
     "element": "hydro",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/dahlia.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "skirk",
@@ -896,8 +995,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/skirk.webp",
-    "PPC": [115, 130, 190, 200, 225, 225, 280]
+    "PPC": [115, 130, 190, 200, 225, 225, 280, 0, 0]
   },
   {
     "id": "ineffa",
@@ -905,8 +1005,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "polearm",
+    "categorie": "subdps",
     "image": "images/characters/ineffa.webp",
-    "PPC": [105, 140, 175, 175, 200, 200, 255]
+    "PPC": [105, 140, 175, 175, 200, 200, 255, 0, 0]
   },
   {
     "id": "aino",
@@ -914,8 +1015,9 @@
     "rarete": "4",
     "element": "hydro",
     "arme": "claymore",
+    "categorie": "support",
     "image": "images/characters/aino.webp",
-    "PPC": [35, 40, 45, 45, 45, 45, 50]
+    "PPC": [35, 40, 45, 45, 45, 45, 50, 0, 0]
   },
   {
     "id": "lauma",
@@ -923,8 +1025,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "catalyst",
+    "categorie": "subdps",
     "image": "images/characters/lauma.webp",
-    "PPC": [95, 105, 140, 150, 155, 160, 300]
+    "PPC": [95, 105, 140, 150, 155, 160, 300, 0, 0]
   },
   {
     "id": "flin",
@@ -932,8 +1035,9 @@
     "rarete": "5",
     "element": "electro",
     "arme": "polearm",
+    "categorie": "dps",
     "image": "images/characters/flin.webp",
-    "PPC": [100, 130, 165, 185, 200, 205, 275]
+    "PPC": [100, 130, 165, 185, 200, 205, 275, 0, 0]
   },
   {
     "id": "manekin",
@@ -941,8 +1045,9 @@
     "rarete": "3",
     "element": "all",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/manekin.webp",
-    "PPC": [0, 0, 0, 0, 0, 0, 0]
+    "PPC": [0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   {
     "id": "nefer",
@@ -950,8 +1055,9 @@
     "rarete": "5",
     "element": "dendro",
     "arme": "catalyst",
+    "categorie": "dps",
     "image": "images/characters/nefer.webp",
-    "PPC": [100, 130, 165, 185, 195, 175, 280]
+    "PPC": [100, 130, 165, 185, 195, 175, 280, 0, 0]
   },
   {
     "id": "jahoda",
@@ -959,8 +1065,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "sword",
+    "categorie": "support",
     "image": "images/characters/jahoda.webp",
-    "PPC": [10, 10, 10, 10, 10, 10, 15]
+    "PPC": [10, 10, 10, 10, 10, 10, 15, 0, 0]
   },
   {
     "id": "durin",
@@ -968,8 +1075,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/durin.webp",
-    "PPC": [95, 130, 170, 180, 190, 195, 285]
+    "PPC": [95, 130, 170, 180, 190, 195, 285, 0, 0]
   },
   {
     "id": "columbina",
@@ -977,8 +1085,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
+    "categorie": "subdps",
     "image": "images/characters/columbina.webp",
-    "PPC": [105, 110, 170, 180, 190, 200, 285]
+    "PPC": [105, 110, 170, 180, 190, 200, 285, 0, 0]
   },
   {
     "id": "illuga",
@@ -986,8 +1095,9 @@
     "rarete": "4",
     "element": "geo",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/illuga.webp",
-    "PPC": [25, 25, 30, 30, 35, 35, 40]
+    "PPC": [25, 25, 30, 30, 35, 35, 40, 0, 0]
   },
   {
     "id": "zibai",
@@ -995,8 +1105,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/zibai.webp",
-    "PPC": [100, 135, 160, 180, 195, 200, 280]
+    "PPC": [100, 135, 160, 180, 195, 200, 280, 0, 0]
   },
   {
     "id": "varka",
@@ -1004,8 +1115,9 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/varka.webp",
-    "PPC": [90, 115, 150, 165, 180, 195, 245]
+    "PPC": [90, 115, 150, 165, 180, 195, 245, 0, 0]
   },
   {
     "id": "linnea",
@@ -1013,8 +1125,9 @@
     "rarete": "5",
     "element": "geo",
     "arme": "bow",
+    "categorie": "subdps",
     "image": "images/characters/linnea.webp",
-    "PPC": [90, 95, 185, 220, 225, 225, 295]
+    "PPC": [90, 95, 185, 220, 225, 225, 295, 0, 0]
   },
 
   {
@@ -1023,8 +1136,9 @@
     "rarete": "4",
     "element": "anemo",
     "arme": "claymore",
+    "categorie": "support",
     "image": "images/characters/prune.webp",
-    "PPC": [60, 60, 60, 60, 60, 60, 65]
+    "PPC": [60, 60, 60, 60, 60, 60, 65, 0, 0]
   },
   {
     "id": "nicole",
@@ -1032,8 +1146,9 @@
     "rarete": "5",
     "element": "pyro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/nicole.webp",
-    "PPC": [65, 70, 115, 120, 130, 130, 250]
+    "PPC": [65, 70, 115, 120, 130, 130, 250, 0, 0]
   },
   {
     "id": "lohen",
@@ -1041,8 +1156,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "polearm",
+    "categorie": "dps",
     "image": "images/characters/lohen.webp",
-    "PPC": [70, 75, 90, 100, 110, 115, 195]
+    "PPC": [70, 75, 90, 100, 110, 115, 195, 0, 0]
   },
   {
     "id": "sandrone",
@@ -1050,8 +1166,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "claymore",
+    "categorie": "dps",
     "image": "images/characters/sandrone.webp",
-    "PPC": [105, 120, 140, 160, 175, 185, 240]
+    "PPC": [105, 120, 140, 160, 175, 185, 240, 0, 0]
   },
   {
     "id": "alyosha",
@@ -1059,8 +1176,9 @@
     "rarete": "4",
     "element": "electro",
     "arme": "polearm",
+    "categorie": "support",
     "image": "images/characters/alyosha.webp",
-    "PPC": [35, 35, 40, 40, 40, 40, 50]
+    "PPC": [35, 35, 40, 40, 40, 40, 50, 0, 0]
   },
   {
     "id": "odette",
@@ -1068,8 +1186,9 @@
     "rarete": "5",
     "element": "cryo",
     "arme": "sword",
+    "categorie": "subdps",
     "image": "images/characters/odette.webp",
-    "PPC": [115, 160, 190, 220, 250, 255, 295]
+    "PPC": [115, 160, 190, 220, 250, 255, 295, 0, 0]
   },
   {
     "id": "vodyanitsa",
@@ -1077,8 +1196,9 @@
     "rarete": "5",
     "element": "hydro",
     "arme": "catalyst",
+    "categorie": "support",
     "image": "images/characters/vodyanitsa.webp",
-    "PPC": [65, 65, 65, 65, 65, 65, 65]
+    "PPC": [65, 65, 65, 65, 65, 65, 65, 0, 0]
   },
   {
     "id": "vesna",
@@ -1086,7 +1206,8 @@
     "rarete": "5",
     "element": "anemo",
     "arme": "sword",
+    "categorie": "dps",
     "image": "images/characters/vesna.webp",
-    "PPC": [100, 100, 100, 100, 100, 100, 100]
+    "PPC": [100, 100, 100, 100, 100, 100, 100, 0, 0]
   }
 ]
