@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(siteDir));
  
 app.get("/", (req, res) => {
-  res.sendFile(path.join(siteDir, "base.html"));
+  res.sendFile(path.join(siteDir, "index.html"));
 });
  
 app.get("/api/boxes/:boxId", (req, res) => {
