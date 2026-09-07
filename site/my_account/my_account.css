@@ -1,6 +1,9 @@
 body {
   background-image: url("../DB/images/bg/Capture d'écran 2026-09-05 195532.png");
   background-color: #1e1e1e;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
   color: white;
   font-family: Arial, sans-serif;
   margin: 20px;
