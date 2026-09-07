@@ -518,12 +518,36 @@ async function initialiserPage() {
       profil.theatre = document.getElementById("theatre").value;
 
       const succes = await sauvegarderProfil(profil);
-      alert(succes ? "Profil enregistré" : "Erreur lors de l'enregistrement du profil");
+      afficherToast(
+        succes ? "Profil enregistré avec succès" : "Erreur lors de l'enregistrement du profil",
+        succes ? "succes" : "erreur"
+      );
     });
   } catch (erreur) {
     console.error(erreur);
     alert("Erreur lors du chargement de la page.");
   }
+}
+
+function afficherToast(message, type = "succes") {
+  const conteneur = document.getElementById("toast-conteneur") || (() => {
+    const div = document.createElement("div");
+    div.id = "toast-conteneur";
+    document.body.appendChild(div);
+    return div;
+  })();
+
+  const toast = document.createElement("div");
+  toast.className = `toast toast-${type}`;
+  toast.textContent = message;
+  conteneur.appendChild(toast);
+
+  requestAnimationFrame(() => toast.classList.add("visible"));
+
+  setTimeout(() => {
+    toast.classList.remove("visible");
+    toast.addEventListener("transitionend", () => toast.remove(), { once: true });
+  }, 3000);
 }
 
 async function demarrer() {
