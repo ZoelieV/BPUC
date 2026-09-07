@@ -165,7 +165,7 @@ function normaliserProfil(profil) {
 // ---- Remplace l'ancien chargerProfil() basé sur localStorage ----
 async function chargerProfil() {
   try {
-    const reponse = await fetch("/api/profile", {
+    const reponse = await fetch("/api/auth/profile", {
       credentials: "include"
     });
 
@@ -190,7 +190,7 @@ async function chargerProfil() {
 // ---- Remplace l'ancien sauvegarderProfil() basé sur localStorage ----
 async function sauvegarderProfil(profil) {
   try {
-    const reponse = await fetch("/api/profile", {
+    const reponse = await fetch("/api/auth/profile", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
