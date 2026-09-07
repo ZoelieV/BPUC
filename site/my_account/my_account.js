@@ -1,19 +1,19 @@
 const iconesElements = {
-  pyro: "DB/images/others/pyro.webp",
-  hydro: "DB/images/others/hydro.webp",
-  anemo: "DB/images/others/anemo.webp",
-  electro: "DB/images/others/electro.webp",
-  cryo: "DB/images/others/cryo.webp",
-  dendro: "DB/images/others/dendro.webp",
-  geo: "DB/images/others/geo.webp"
+  pyro: "../DB/images/others/pyro.webp",
+  hydro: "../DB/images/others/hydro.webp",
+  anemo: "../DB/images/others/anemo.webp",
+  electro: "../DB/images/others/electro.webp",
+  cryo: "../DB/images/others/cryo.webp",
+  dendro: "../DB/images/others/dendro.webp",
+  geo: "../DB/images/others/geo.webp"
 };
  
 const iconesTypesArmes = {
-  sword: "DB/images/others/sword.webp",
-  claymore: "DB/images/others/claymore.webp",
-  polearm: "DB/images/others/polearm.webp",
-  bow: "DB/images/others/bow.webp",
-  catalyst: "DB/images/others/catalyst.webp"
+  sword: "../DB/images/others/sword.webp",
+  claymore: "../DB/images/others/claymore.webp",
+  polearm: "../DB/images/others/polearm.webp",
+  bow: "../DB/images/others/bow.webp",
+  catalyst: "../DB/images/others/catalyst.webp"
 };
  
 const nomsBoxes = {
@@ -40,9 +40,55 @@ const configCollections = {
     nomVue: "Armes"
   }
 };
+
+async function chargerSessionDiscord() {
+  const loginGate = document.getElementById("login-gate");
+  const accountContent = document.getElementById("account-content");
+  const loginBtn = document.getElementById("discord-login-btn");
+  const avatar = document.getElementById("discord-avatar");
+  const name = document.getElementById("discord-name");
+  const logoutBtn = document.getElementById("discord-logout-btn");
+
+  loginBtn.addEventListener("click", () => {
+    window.location.href = "/api/auth/discord/login";
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    window.location.href = "/api/auth/logout";
+  });
+
+  try {
+    const response = await fetch("/api/auth/me", {
+      credentials: "include"
+    });
+
+    if (!response.ok) {
+      loginGate.classList.add("actif");
+      accountContent.classList.remove("actif");
+      return;
+    }
+
+    const data = await response.json();
+
+    loginGate.classList.remove("actif");
+    accountContent.classList.add("actif");
+
+    name.textContent = data.user.global_name || data.user.username;
+    if (data.user.avatar) {
+      avatar.src = data.user.avatar;
+      avatar.hidden = false;
+    } else {
+      avatar.hidden = true;
+    }
+  } catch (error) {
+    console.error(error);
+    loginGate.classList.add("actif");
+    accountContent.classList.remove("actif");
+  }
+}
  
 async function chargerPersonnages() {
-  const reponse = await fetch("DB/characters.json");
+  const reponse = await fetch("../DB/characters.json");
   if (!reponse.ok) {
     throw new Error("Impossible de charger DB/characters.json");
   }
@@ -50,7 +96,7 @@ async function chargerPersonnages() {
 }
  
 async function chargerArmes() {
-  const reponse = await fetch("DB/weapons.json");
+  const reponse = await fetch("../DB/weapons.json");
   if (!reponse.ok) {
     throw new Error("Impossible de charger DB/weapons.json");
   }
@@ -149,14 +195,14 @@ function getFondRarete(rarete) {
   const valeur = String(rarete);
  
   if (valeur === "5") {
-    return "DB/images/others/bg_5_star.webp";
+    return "../DB/images/others/bg_5_star.webp";
   }
  
   if (valeur === "3") {
-    return "DB/images/others/bg_3_star.webp";
+    return "../DB/images/others/bg_3_star.webp";
   }
  
-  return "DB/images/others/bg_4_star.webp";
+  return "../DB/images/others/bg_4_star.webp";
 }
  
 function getConfigCollection(vueActive) {
@@ -231,7 +277,7 @@ function creerCarteItem(item, valeur = -1, boxActive = "full", selectionne = fal
  
   conteneur.innerHTML = `
 <div class="visuel-personnage ${classeSelectionnable} ${classeSelectionnee}" data-id="${item.id}" style="background-image: url('${fond}'); opacity: ${opacite};">
-<img class="image-personnage" src="DB/${item.image}" alt="${item.nom}">
+<img class="image-personnage" src="../DB/${item.image}" alt="${item.nom}">
       ${icone ? `<img class="icone-element" src="${icone}" alt="">` : ""}
 </div>
  
@@ -442,5 +488,6 @@ async function initialiserPage() {
     alert("Erreur lors du chargement de la page.");
   }
 }
- 
+
+chargerSessionDiscord();
 initialiserPage();

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon compte</title>
+<link rel="stylesheet" href="my_account.css">
+<style>
+  /* Zone affichée si l'utilisateur n'est PAS connecté */
+  #login-gate {
+    display: none;
+    min-height: 60vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  #login-gate.actif {
+    display: flex;
+  }
+  #login-gate button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background: #5865F2;
+    color: white;
+  }
+  #login-gate button:hover {
+    background: #4752c4;
+  }
+
+  /* Contenu normal du compte, caché tant qu'on ne sait pas si connecté */
+  #account-content {
+    display: none;
+  }
+  #account-content.actif {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Zone affichée uniquement si non connecté -->
+  <div id="login-gate">
+    <h1>Mon compte</h1>
+    <p>Tu dois te connecter avec Discord pour accéder à cette page.</p>
+    <button id="discord-login-btn" type="button">Connexion Discord</button>
+  </div>
+
+  <!-- Contenu normal, affiché uniquement si connecté -->
+  <div id="account-content">
+
+    <a href="../index.html" class="lien-accueil">Accueil</a>
+
+    <div id="auth-zone" style="display:flex; align-items:center; gap:10px; justify-content:flex-end;">
+      <div id="discord-user-box">
+        <img id="discord-avatar" alt="Avatar Discord" width="40" height="40" style="border-radius: 50%;">
+        <span id="discord-name"></span>
+        <button id="discord-logout-btn" type="button">Déconnexion</button>
+      </div>
+    </div>
+
+    <h1>Mon compte</h1>
+
+    <form id="profil-form">
+      <div class="bloc-form">
+        <label for="uid">UID :</label>
+        <input type="text" id="uid" name="uid">
+      </div>
+
+      <div class="bloc-form">
+        <label for="theatre">Théâtre clear :</label>
+        <select id="theatre" name="theatre">
+          <option value="">Choisir</option>
+          <option value="1">6</option>
+          <option value="2">8</option>
+          <option value="3">10</option>
+          <option value="4">12</option>
+        </select>
+      </div>
+
+      <h2>Filtres</h2>
+
+      <div class="bloc-filtres">
+        <strong>Éléments :</strong>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="pyro"><img src="../DB/images/others/pyro.webp" alt="Pyro" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="hydro"><img src="../DB/images/others/hydro.webp" alt="Hydro" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="electro"><img src="../DB/images/others/electro.webp" alt="Electro" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="cryo"><img src="../DB/images/others/cryo.webp" alt="Cryo" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="anemo"><img src="../DB/images/others/anemo.webp" alt="Anemo" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="geo"><img src="../DB/images/others/geo.webp" alt="Geo" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="dendro"><img src="../DB/images/others/dendro.webp" alt="Dendro" width="30"></label>
+      </div>
+
+      <div class="bloc-filtres">
+        <strong>Armes :</strong>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="sword"><img src="../DB/images/others/sword.webp" alt="Sword" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="claymore"><img src="../DB/images/others/claymore.webp" alt="Claymore" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="polearm"><img src="../DB/images/others/polearm.webp" alt="Polearm" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="bow"><img src="../DB/images/others/bow.webp" alt="Bow" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="catalyst"><img src="../DB/images/others/catalyst.webp" alt="Catalyst" width="30"></label>
+      </div>
+
+      <div class="bloc-filtres">
+        <strong>Rareté :</strong>
+        <label class="filtre-texte"><input type="checkbox" class="filtre-rarete" value="4"><span>4★</span></label>
+        <label class="filtre-texte"><input type="checkbox" class="filtre-rarete" value="5"><span>5★</span></label>
+      </div>
+
+      <div class="box-selector">
+        <button type="button" class="box-btn active" data-box="full">Full box</button>
+        <button type="button" class="box-btn" data-box="stuff">Personnages stuff</button>
+        <button type="button" class="box-btn" data-box="opti1">Box optimisée 1</button>
+        <button type="button" class="box-btn" data-box="opti2">Box optimisée 2</button>
+        <button type="button" class="box-btn" data-box="opti3">Box optimisée 3</button>
+        <button type="button" class="box-btn" data-box="opti4">Box optimisée 4</button>
+        <button type="button" class="box-btn" data-box="opti5">Box optimisée 5</button>
+      </div>
+
+      <div id="box-total" class="box-total">
+        <strong>Total <span id="box-total-label">Full box</span> :</strong>
+        <span id="total-ppc">0</span>
+      </div>
+
+      <div class="section-collection">
+        <h2>Collection</h2>
+
+        <div class="view-selector">
+          <button type="button" class="view-btn active" data-view="characters">Personnages</button>
+          <button type="button" class="view-btn" data-view="weapons">Armes</button>
+        </div>
+      </div>
+
+      <div id="liste-collection" class="liste-personnages"></div>
+
+      <button type="submit" class="btn-enregistrer">Enregistrer</button>
+    </form>
+
+  </div>
+
+  <script src="my_account.js"></script>
+</body>
+</html>
