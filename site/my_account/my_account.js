@@ -7,7 +7,7 @@ const iconesElements = {
   dendro: "../DB/images/others/dendro.webp",
   geo: "../DB/images/others/geo.webp"
 };
- 
+
 const iconesTypesArmes = {
   sword: "../DB/images/others/sword.webp",
   claymore: "../DB/images/others/claymore.webp",
@@ -15,7 +15,7 @@ const iconesTypesArmes = {
   bow: "../DB/images/others/bow.webp",
   catalyst: "../DB/images/others/catalyst.webp"
 };
- 
+
 const nomsBoxes = {
   full: "Full box",
   stuff: "Personnages stuff",
@@ -25,7 +25,7 @@ const nomsBoxes = {
   opti4: "Box optimisée 4",
   opti5: "Box optimisée 5"
 };
- 
+
 const configCollections = {
   characters: {
     pointsField: "PPC",
@@ -65,7 +65,7 @@ async function chargerSessionDiscord() {
     if (!response.ok) {
       loginGate.classList.add("actif");
       accountContent.classList.remove("actif");
-      return;
+      return false;
     }
 
     const data = await response.json();
@@ -80,13 +80,16 @@ async function chargerSessionDiscord() {
     } else {
       avatar.hidden = true;
     }
+
+    return true;
   } catch (error) {
     console.error(error);
     loginGate.classList.add("actif");
     accountContent.classList.remove("actif");
+    return false;
   }
 }
- 
+
 async function chargerPersonnages() {
   const reponse = await fetch("../DB/characters.json");
   if (!reponse.ok) {
@@ -94,7 +97,7 @@ async function chargerPersonnages() {
   }
   return await reponse.json();
 }
- 
+
 async function chargerArmes() {
   const reponse = await fetch("../DB/weapons.json");
   if (!reponse.ok) {
@@ -102,7 +105,7 @@ async function chargerArmes() {
   }
   return await reponse.json();
 }
- 
+
 function creerSelectionsParDefaut() {
   return {
     stuff: {},
@@ -113,7 +116,7 @@ function creerSelectionsParDefaut() {
     opti5: {}
   };
 }
- 
+
 function creerProfilParDefaut() {
   return {
     uid: "",
@@ -128,143 +131,177 @@ function creerProfilParDefaut() {
     }
   };
 }
- 
-function chargerProfil() {
-  const profilSauvegarde = localStorage.getItem("profil");
- 
-  if (!profilSauvegarde) {
-    return creerProfilParDefaut();
-  }
- 
-  const profil = JSON.parse(profilSauvegarde);
- 
+
+function normaliserProfil(profil) {
   if (!profil.characters) {
     profil.characters = {
       full: profil.fullBox || profil.personnages || {},
       selections: profil.selections || creerSelectionsParDefaut()
     };
   }
- 
+
   if (!profil.weapons) {
     profil.weapons = {
       full: {},
       selections: creerSelectionsParDefaut()
     };
   }
- 
+
   if (!profil.characters.selections) {
     profil.characters.selections = creerSelectionsParDefaut();
   }
- 
+
   if (!profil.weapons.selections) {
     profil.weapons.selections = creerSelectionsParDefaut();
   }
- 
+
   delete profil.fullBox;
   delete profil.personnages;
   delete profil.selections;
- 
+
   return profil;
 }
- 
-function sauvegarderProfil(profil) {
-  localStorage.setItem("profil", JSON.stringify(profil));
+
+// ---- Remplace l'ancien chargerProfil() basé sur localStorage ----
+async function chargerProfil() {
+  try {
+    const reponse = await fetch("/api/profile", {
+      credentials: "include"
+    });
+
+    if (!reponse.ok) {
+      console.error("Impossible de charger le profil depuis le serveur.");
+      return creerProfilParDefaut();
+    }
+
+    const data = await reponse.json();
+
+    if (!data.profil) {
+      return creerProfilParDefaut();
+    }
+
+    return normaliserProfil(data.profil);
+  } catch (error) {
+    console.error(error);
+    return creerProfilParDefaut();
+  }
 }
- 
+
+// ---- Remplace l'ancien sauvegarderProfil() basé sur localStorage ----
+async function sauvegarderProfil(profil) {
+  try {
+    const reponse = await fetch("/api/profile", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(profil)
+    });
+
+    if (!reponse.ok) {
+      throw new Error("Échec de la sauvegarde côté serveur.");
+    }
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
 function getBoxActive() {
   return document.querySelector(".box-btn.active")?.dataset.box || "full";
 }
- 
+
 function setBoxActive(box) {
   document.querySelectorAll(".box-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.box === box);
   });
 }
- 
+
 function getVueActive() {
   return document.querySelector(".view-btn.active")?.dataset.view || "characters";
 }
- 
+
 function setVueActive(view) {
   document.querySelectorAll(".view-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.view === view);
   });
 }
- 
+
 function getFondRarete(rarete) {
   const valeur = String(rarete);
- 
+
   if (valeur === "5") {
     return "../DB/images/others/bg_5_star.webp";
   }
- 
+
   if (valeur === "3") {
     return "../DB/images/others/bg_3_star.webp";
   }
- 
+
   return "../DB/images/others/bg_4_star.webp";
 }
- 
+
 function getConfigCollection(vueActive) {
   return configCollections[vueActive];
 }
- 
+
 function getCollectionProfil(profil, vueActive) {
   return profil[vueActive];
 }
- 
+
 function getListeActive(personnages, armes) {
   return getVueActive() === "characters" ? personnages : armes;
 }
- 
+
 function getPPC(item, valeur, vueActive) {
   if (valeur < 0) {
     return "";
   }
- 
+
   const config = getConfigCollection(vueActive);
   return item[config.pointsField]?.[valeur] ?? "";
 }
- 
+
 function creerBadgePPC(valeur) {
   const badge = document.createElement("div");
   badge.className = "ppc-badge";
   badge.textContent = valeur;
   return badge;
 }
- 
+
 function getTypeValeur(item, vueActive) {
   return vueActive === "characters" ? item.arme : item.type;
 }
- 
+
 function getIconeItem(item, vueActive) {
   if (vueActive === "characters") {
     return iconesElements[item.element] || "";
   }
- 
+
   return iconesTypesArmes[item.type] || "";
 }
- 
+
 function creerCarteItem(item, valeur = -1, boxActive = "full", selectionne = false, vueActive = "characters") {
   const config = getConfigCollection(vueActive);
   const conteneur = document.createElement("div");
   conteneur.className = "carte-personnage";
- 
+
   const fond = getFondRarete(item.rarete);
   const icone = getIconeItem(item, vueActive);
   const affichageNiveau = valeur < 0 ? "-" : config.labels[valeur];
- 
+
   const classeSelectionnable = boxActive === "full" ? "" : "selectionnable";
   const classeSelectionnee = boxActive !== "full" && selectionne ? "selectionnee" : "";
- 
+
   const opacite = boxActive === "full"
     ? (valeur < 0 ? "0.4" : "1")
     : (selectionne ? "1" : "0.45");
- 
+
   const infoNiveau = boxActive === "full"
     ? ""
     : `<div class="info-constellation">${affichageNiveau}</div>`;
- 
+
   const zoneAction = boxActive === "full"
     ? `
 <div class="controle-constellation">
@@ -274,132 +311,132 @@ function creerCarteItem(item, valeur = -1, boxActive = "full", selectionne = fal
 </div>
     `
     : "";
- 
+
   conteneur.innerHTML = `
 <div class="visuel-personnage ${classeSelectionnable} ${classeSelectionnee}" data-id="${item.id}" style="background-image: url('${fond}'); opacity: ${opacite};">
 <img class="image-personnage" src="../DB/${item.image}" alt="${item.nom}">
       ${icone ? `<img class="icone-element" src="${icone}" alt="">` : ""}
 </div>
- 
+
     <div class="nom-personnage">${item.nom}</div>
     ${infoNiveau}
     ${zoneAction}
   `;
- 
+
   if (valeur >= 0) {
     conteneur.querySelector(".visuel-personnage").appendChild(
       creerBadgePPC(getPPC(item, valeur, vueActive))
     );
   }
- 
+
   return conteneur;
 }
- 
+
 function afficherCollection(personnages, armes, profil) {
   const liste = document.getElementById("liste-collection");
   liste.innerHTML = "";
- 
+
   const vueActive = getVueActive();
   const boxActive = getBoxActive();
   const items = getListeActive(personnages, armes);
   const collectionProfil = getCollectionProfil(profil, vueActive);
- 
+
   const elementsSelectionnes = Array.from(document.querySelectorAll(".filtre-element:checked"))
     .map(input => input.value);
- 
+
   const armesSelectionnees = Array.from(document.querySelectorAll(".filtre-arme:checked"))
     .map(input => input.value);
- 
+
   const rareteSelectionnees = Array.from(document.querySelectorAll(".filtre-rarete:checked"))
     .map(input => input.value);
- 
+
   const itemsFiltres = items.filter(item => {
     const typeValeur = getTypeValeur(item, vueActive);
     const rareteValeur = item.rarete != null ? String(item.rarete) : "";
- 
+
     const filtreElementOK =
       elementsSelectionnes.length === 0 || elementsSelectionnes.includes(item.element);
- 
+
     const filtreArmeOK =
       armesSelectionnees.length === 0 || armesSelectionnees.includes(typeValeur);
- 
+
     const filtreRareteOK =
       rareteSelectionnees.length === 0 ||
       rareteValeur === "" ||
       rareteSelectionnees.includes(rareteValeur);
- 
+
     if (boxActive !== "full" && (collectionProfil.full[item.id] ?? -1) < 0) {
       return false;
     }
- 
+
     return filtreElementOK && filtreArmeOK && filtreRareteOK;
   });
- 
+
   itemsFiltres.forEach(item => {
     const valeur = collectionProfil.full[item.id] ?? -1;
     const selectionne = boxActive === "full"
       ? valeur >= 0
       : !!collectionProfil.selections[boxActive][item.id];
- 
+
     const carte = creerCarteItem(item, valeur, boxActive, selectionne, vueActive);
     liste.appendChild(carte);
   });
 }
- 
+
 function mettreAJourTotalBox(personnages, armes, profil) {
   const vueActive = getVueActive();
   const boxActive = getBoxActive();
   const items = getListeActive(personnages, armes);
   const collectionProfil = getCollectionProfil(profil, vueActive);
   const config = getConfigCollection(vueActive);
- 
+
   let total = 0;
- 
+
   items.forEach(item => {
     const valeur = collectionProfil.full[item.id] ?? -1;
- 
+
     if (valeur < 0) {
       return;
     }
- 
+
     const inclus = boxActive === "full"
       ? true
       : !!collectionProfil.selections[boxActive][item.id];
- 
+
     if (inclus) {
       total += Number(item[config.pointsField]?.[valeur] ?? 0);
     }
   });
- 
+
   document.getElementById("box-total-label").textContent = `${nomsBoxes[boxActive]} - ${config.nomVue}`;
   document.getElementById("total-ppc").textContent = total;
 }
- 
+
 async function initialiserPage() {
   try {
     const [personnages, armes] = await Promise.all([
       chargerPersonnages(),
       chargerArmes()
     ]);
- 
-    const profil = chargerProfil();
- 
+
+    const profil = await chargerProfil();
+
     document.getElementById("uid").value = profil.uid || "";
     document.getElementById("theatre").value = profil.theatre || "";
- 
+
     setBoxActive("full");
     setVueActive("characters");
- 
+
     afficherCollection(personnages, armes, profil);
     mettreAJourTotalBox(personnages, armes, profil);
- 
+
     document.querySelectorAll(".filtre-element, .filtre-arme, .filtre-rarete").forEach(input => {
       input.addEventListener("change", () => {
         afficherCollection(personnages, armes, profil);
         mettreAJourTotalBox(personnages, armes, profil);
       });
     });
- 
+
     document.querySelectorAll(".box-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         setBoxActive(btn.dataset.box);
@@ -407,7 +444,7 @@ async function initialiserPage() {
         mettreAJourTotalBox(personnages, armes, profil);
       });
     });
- 
+
     document.querySelectorAll(".view-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         setVueActive(btn.dataset.view);
@@ -415,73 +452,73 @@ async function initialiserPage() {
         mettreAJourTotalBox(personnages, armes, profil);
       });
     });
- 
+
     const liste = document.getElementById("liste-collection");
- 
+
     liste.addEventListener("click", event => {
       const vueActive = getVueActive();
       const boxActive = getBoxActive();
       const items = getListeActive(personnages, armes);
       const collectionProfil = getCollectionProfil(profil, vueActive);
       const config = getConfigCollection(vueActive);
- 
+
       if (boxActive === "full") {
         const boutonMoins = event.target.closest(".moins-btn");
         const boutonPlus = event.target.closest(".plus-btn");
- 
+
         if (!boutonMoins && !boutonPlus) {
           return;
         }
- 
+
         const id = (boutonMoins || boutonPlus).dataset.id;
         let valeur = collectionProfil.full[id] ?? -1;
- 
+
         if (boutonPlus) {
           valeur = valeur === config.maxLevel ? -1 : valeur + 1;
         }
- 
+
         if (boutonMoins) {
           valeur = valeur === -1 ? config.maxLevel : valeur - 1;
         }
- 
+
         collectionProfil.full[id] = valeur;
- 
+
         if (valeur < 0) {
           Object.keys(collectionProfil.selections).forEach(box => {
             delete collectionProfil.selections[box][id];
           });
         }
- 
+
         afficherCollection(personnages, armes, profil);
         mettreAJourTotalBox(personnages, armes, profil);
         return;
       }
- 
+
       const visuel = event.target.closest(".visuel-personnage[data-id]");
       if (!visuel) {
         return;
       }
- 
+
       const id = visuel.dataset.id;
- 
+
       if (collectionProfil.selections[boxActive][id]) {
         delete collectionProfil.selections[boxActive][id];
       } else {
         collectionProfil.selections[boxActive][id] = true;
       }
- 
+
       afficherCollection(personnages, armes, profil);
       mettreAJourTotalBox(personnages, armes, profil);
     });
- 
-    document.getElementById("profil-form").addEventListener("submit", event => {
+
+    document.getElementById("profil-form").addEventListener("submit", async event => {
       event.preventDefault();
- 
+
       profil.uid = document.getElementById("uid").value;
       profil.theatre = document.getElementById("theatre").value;
- 
-      sauvegarderProfil(profil);
-      alert("Profil enregistré");
+
+      const succes = await sauvegarderProfil(profil);
+      alert(succes ? "Profil enregistré" : "Erreur lors de l'enregistrement du profil");
     });
   } catch (erreur) {
     console.error(erreur);
@@ -489,5 +526,12 @@ async function initialiserPage() {
   }
 }
 
-chargerSessionDiscord();
-initialiserPage();
+async function demarrer() {
+  const connecte = await chargerSessionDiscord();
+
+  if (connecte) {
+    initialiserPage();
+  }
+}
+
+demarrer();
