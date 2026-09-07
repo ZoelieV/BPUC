@@ -144,7 +144,11 @@ h2 {
 .nom-personnage {
   margin-top: 6px;
   font-size: 14px;
+  font-weight: bold;
   display: inline-block;
+  min-height: 2.6em;
+  line-height: 1.3;
+  box-sizing: border-box;
   padding: 2px 8px;
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.35);
@@ -153,6 +157,7 @@ h2 {
  
 .info-constellation {
   font-size: 12px;
+  font-weight: bold;
   opacity: 0.95;
   margin-top: 2px;
   display: inline-block;
