@@ -144,12 +144,22 @@ h2 {
 .nom-personnage {
   margin-top: 6px;
   font-size: 14px;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
 }
  
 .info-constellation {
   font-size: 12px;
-  opacity: 0.85;
+  opacity: 0.95;
   margin-top: 2px;
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
 }
  
 .controle-constellation {
