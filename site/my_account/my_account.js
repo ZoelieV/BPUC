@@ -254,6 +254,51 @@ function getListeActive(personnages, armes) {
   return getVueActive() === "characters" ? personnages : armes;
 }
 
+// ---- Gestion des instances dupliquées (armes uniquement) ----
+// Une instance dupliquée a pour id "idArme#2", "idArme#3", etc.
+// L'instance "originale" garde l'id brut de l'arme.
+
+function getInstancesArme(idArme, collectionProfil) {
+  const prefixe = `${idArme}#`;
+
+  return Object.keys(collectionProfil.full)
+    .filter(cle => cle === idArme || cle.startsWith(prefixe))
+    .sort((a, b) => {
+      const na = a === idArme ? 1 : parseInt(a.slice(prefixe.length), 10);
+      const nb = b === idArme ? 1 : parseInt(b.slice(prefixe.length), 10);
+      return na - nb;
+    });
+}
+
+function creerNouvelleInstanceId(idArme, collectionProfil) {
+  const prefixe = `${idArme}#`;
+  let maxN = 1;
+
+  Object.keys(collectionProfil.full).forEach(cle => {
+    if (cle.startsWith(prefixe)) {
+      const n = parseInt(cle.slice(prefixe.length), 10);
+      if (!isNaN(n) && n > maxN) {
+        maxN = n;
+      }
+    }
+  });
+
+  return `${idArme}#${maxN + 1}`;
+}
+
+function estInstanceDupliquee(instanceId) {
+  return instanceId.includes("#");
+}
+
+function itemPossede(item, vueActive, collectionProfil) {
+  if (vueActive !== "weapons") {
+    return (collectionProfil.full[item.id] ?? -1) >= 0;
+  }
+
+  return getInstancesArme(item.id, collectionProfil)
+    .some(instanceId => (collectionProfil.full[instanceId] ?? -1) >= 0);
+}
+
 function getPPC(item, valeur, vueActive) {
   if (valeur < 0) {
     return "";
@@ -282,8 +327,9 @@ function getIconeItem(item, vueActive) {
   return iconesTypesArmes[item.type] || "";
 }
 
-function creerCarteItem(item, valeur = -1, boxActive = "full", selectionne = false, vueActive = "characters") {
+function creerCarteItem(item, valeur = -1, boxActive = "full", selectionne = false, vueActive = "characters", instanceId = null, peutDupliquer = false, estDuplicata = false) {
   const config = getConfigCollection(vueActive);
+  const idInstance = instanceId || item.id;
   const conteneur = document.createElement("div");
   conteneur.className = "carte-personnage";
 
@@ -302,23 +348,30 @@ function creerCarteItem(item, valeur = -1, boxActive = "full", selectionne = fal
     ? ""
     : `<div class="info-constellation">${affichageNiveau}</div>`;
 
+  const boutonDupliquer = peutDupliquer
+    ? `<button type="button" class="constellation-btn dupliquer-btn" data-base-id="${item.id}" title="Dupliquer cette arme">⧉</button>`
+    : "";
+
   const zoneAction = boxActive === "full"
     ? `
 <div class="controle-constellation">
-<button type="button" class="constellation-btn moins-btn" data-id="${item.id}">-</button>
+<button type="button" class="constellation-btn moins-btn" data-id="${idInstance}">-</button>
 <span class="info-constellation">${affichageNiveau}</span>
-<button type="button" class="constellation-btn plus-btn" data-id="${item.id}">+</button>
+<button type="button" class="constellation-btn plus-btn" data-id="${idInstance}">+</button>
+${boutonDupliquer}
 </div>
     `
     : "";
 
+  const badgeCopie = estDuplicata ? `<span class="badge-copie">Copie</span>` : "";
+
   conteneur.innerHTML = `
-<div class="visuel-personnage ${classeSelectionnable} ${classeSelectionnee}" data-id="${item.id}" style="background-image: url('${fond}'); opacity: ${opacite};">
+<div class="visuel-personnage ${classeSelectionnable} ${classeSelectionnee}" data-id="${idInstance}" style="background-image: url('${fond}'); opacity: ${opacite};">
 <img class="image-personnage" src="../DB/${item.image}" alt="${item.nom}">
       ${icone ? `<img class="icone-element" src="${icone}" alt="">` : ""}
 </div>
 
-    <div class="nom-personnage">${item.nom}</div>
+    <div class="nom-personnage">${item.nom} ${badgeCopie}</div>
     ${infoNiveau}
     ${zoneAction}
   `;
@@ -365,7 +418,7 @@ function afficherCollection(personnages, armes, profil) {
       rareteValeur === "" ||
       rareteSelectionnees.includes(rareteValeur);
 
-    if (boxActive !== "full" && (collectionProfil.full[item.id] ?? -1) < 0) {
+    if (boxActive !== "full" && !itemPossede(item, vueActive, collectionProfil)) {
       return false;
     }
 
@@ -373,6 +426,24 @@ function afficherCollection(personnages, armes, profil) {
   });
 
   itemsFiltres.forEach(item => {
+    if (vueActive === "weapons") {
+      const instances = getInstancesArme(item.id, collectionProfil);
+      const instancesAffichees = instances.length > 0 ? instances : [item.id];
+
+      instancesAffichees.forEach(instanceId => {
+        const valeur = collectionProfil.full[instanceId] ?? -1;
+        const selectionne = boxActive === "full"
+          ? valeur >= 0
+          : !!collectionProfil.selections[boxActive][instanceId];
+        const estDuplicata = estInstanceDupliquee(instanceId);
+        const peutDupliquer = boxActive === "full" && valeur >= 0;
+
+        const carte = creerCarteItem(item, valeur, boxActive, selectionne, vueActive, instanceId, peutDupliquer, estDuplicata);
+        liste.appendChild(carte);
+      });
+      return;
+    }
+
     const valeur = collectionProfil.full[item.id] ?? -1;
     const selectionne = boxActive === "full"
       ? valeur >= 0
@@ -393,19 +464,26 @@ function mettreAJourTotalBox(personnages, armes, profil) {
   let total = 0;
 
   items.forEach(item => {
-    const valeur = collectionProfil.full[item.id] ?? -1;
+    const instances = vueActive === "weapons"
+      ? getInstancesArme(item.id, collectionProfil)
+      : [item.id];
+    const instancesAffichees = instances.length > 0 ? instances : [item.id];
 
-    if (valeur < 0) {
-      return;
-    }
+    instancesAffichees.forEach(instanceId => {
+      const valeur = collectionProfil.full[instanceId] ?? -1;
 
-    const inclus = boxActive === "full"
-      ? true
-      : !!collectionProfil.selections[boxActive][item.id];
+      if (valeur < 0) {
+        return;
+      }
 
-    if (inclus) {
-      total += Number(item[config.pointsField]?.[valeur] ?? 0);
-    }
+      const inclus = boxActive === "full"
+        ? true
+        : !!collectionProfil.selections[boxActive][instanceId];
+
+      if (inclus) {
+        total += Number(item[config.pointsField]?.[valeur] ?? 0);
+      }
+    });
   });
 
   document.getElementById("box-total-label").textContent = `${nomsBoxes[boxActive]} - ${config.nomVue}`;
@@ -463,6 +541,24 @@ async function initialiserPage() {
       const config = getConfigCollection(vueActive);
 
       if (boxActive === "full") {
+        const boutonDupliquer = event.target.closest(".dupliquer-btn");
+
+        if (boutonDupliquer) {
+          const idArme = boutonDupliquer.dataset.baseId;
+          const valeurArme = collectionProfil.full[idArme] ?? -1;
+
+          if (valeurArme < 0) {
+            return;
+          }
+
+          const nouvelId = creerNouvelleInstanceId(idArme, collectionProfil);
+          collectionProfil.full[nouvelId] = 0; // nouvelle copie à R1
+
+          afficherCollection(personnages, armes, profil);
+          mettreAJourTotalBox(personnages, armes, profil);
+          return;
+        }
+
         const boutonMoins = event.target.closest(".moins-btn");
         const boutonPlus = event.target.closest(".plus-btn");
 
@@ -481,12 +577,21 @@ async function initialiserPage() {
           valeur = valeur === -1 ? config.maxLevel : valeur - 1;
         }
 
-        collectionProfil.full[id] = valeur;
-
-        if (valeur < 0) {
+        // Une copie dupliquée n'existe pas en dessous de R1 : elle est
+        // simplement supprimée au lieu de repasser à "non possédée".
+        if (estInstanceDupliquee(id) && valeur < 0) {
+          delete collectionProfil.full[id];
           Object.keys(collectionProfil.selections).forEach(box => {
             delete collectionProfil.selections[box][id];
           });
+        } else {
+          collectionProfil.full[id] = valeur;
+
+          if (valeur < 0) {
+            Object.keys(collectionProfil.selections).forEach(box => {
+              delete collectionProfil.selections[box][id];
+            });
+          }
         }
 
         afficherCollection(personnages, armes, profil);
