@@ -99,6 +99,33 @@ h1, h2 {
   cursor: pointer;
 }
 
+/* ---- Sélecteurs vue (perso/armes) et box (full/stuff), même style que my_account ---- */
+
+#view-selector,
+#box-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.view-btn,
+.box-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.view-btn.active,
+.box-btn.active {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
 /* ---- Barre de tri (même style que .box-btn de my_account) ---- */
 
 #sort-bar {
@@ -160,6 +187,13 @@ h1, h2 {
   width: 80px;
   border-radius: 8px;
   display: block;
+}
+
+.character-icone-type {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
 }
 
 .character-ppc-badge {

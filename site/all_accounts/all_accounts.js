@@ -1,11 +1,43 @@
-// État du tri actuellement affiché dans la popup
-let etatTri = {
-  cle: null,      // "rarete" | "points" | "constellation" | null
-  direction: 1    // 1 = croissant, -1 = décroissant
+const iconesElements = {
+  pyro: "../DB/images/others/pyro.webp",
+  hydro: "../DB/images/others/hydro.webp",
+  anemo: "../DB/images/others/anemo.webp",
+  electro: "../DB/images/others/electro.webp",
+  cryo: "../DB/images/others/cryo.webp",
+  dendro: "../DB/images/others/dendro.webp",
+  geo: "../DB/images/others/geo.webp"
 };
 
-// Données du personnage courant affichées dans la popup (pour pouvoir re-trier sans refetch)
-let personnagesAffiches = [];
+const iconesTypesArmes = {
+  sword: "../DB/images/others/sword.webp",
+  claymore: "../DB/images/others/claymore.webp",
+  polearm: "../DB/images/others/polearm.webp",
+  bow: "../DB/images/others/bow.webp",
+  catalyst: "../DB/images/others/catalyst.webp"
+};
+
+const configCollections = {
+  characters: {
+    pointsField: "PPC",
+    labels: ["C0", "C1", "C2", "C3", "C4", "C5", "C6"],
+    nomVue: "Personnages"
+  },
+  weapons: {
+    pointsField: "PPW",
+    labels: ["R1", "R2", "R3", "R4", "R5"],
+    nomVue: "Armes"
+  }
+};
+
+// État courant de la popup
+let vueActive = "characters";   // "characters" | "weapons"
+let boxActive = "full";         // "full" | "stuff"
+let etatTri = { cle: null, direction: 1 };
+
+// Données brutes du profil ouvert, conservées pour re-render sans refetch
+let profilCourant = null;
+let personnagesData = [];
+let armesData = [];
 
 async function chargerComptes() {
   const reponse = await fetch("/api/accounts");
@@ -23,6 +55,14 @@ async function chargerPersonnages() {
   return await reponse.json();
 }
 
+async function chargerArmes() {
+  const reponse = await fetch("../DB/weapons.json");
+  if (!reponse.ok) {
+    throw new Error("Impossible de charger les armes.");
+  }
+  return await reponse.json();
+}
+
 async function chargerProfil(discordId) {
   const reponse = await fetch(`/api/accounts/${discordId}`);
   if (!reponse.ok) {
@@ -31,9 +71,9 @@ async function chargerProfil(discordId) {
   return await reponse.json();
 }
 
-function getLabelConstellation(valeur) {
+function getLabelConstellation(valeur, vue) {
   if (valeur < 0) return "";
-  return `C${valeur}`;
+  return configCollections[vue].labels[valeur];
 }
 
 function getFondRarete(rarete) {
@@ -48,6 +88,13 @@ function getFondRarete(rarete) {
   }
 
   return "../DB/images/others/bg_4_star.webp";
+}
+
+function getIconeItem(item, vue) {
+  if (vue === "characters") {
+    return iconesElements[item.element] || "";
+  }
+  return iconesTypesArmes[item.type] || "";
 }
 
 function afficherComptes(comptes) {
@@ -75,6 +122,34 @@ function afficherComptes(comptes) {
   });
 }
 
+// ---- Construction de la liste affichée selon vue + box ----
+
+function construireListeAffichee() {
+  const config = configCollections[vueActive];
+  const items = vueActive === "characters" ? personnagesData : armesData;
+  const collectionProfil = profilCourant.data?.[vueActive] || { full: {}, selections: {} };
+
+  return items
+    .filter(item => {
+      const valeur = collectionProfil.full?.[item.id] ?? -1;
+
+      if (valeur < 0) {
+        return false;
+      }
+
+      if (boxActive === "stuff") {
+        return !!collectionProfil.selections?.stuff?.[item.id];
+      }
+
+      return true;
+    })
+    .map(item => ({
+      item,
+      valeur: collectionProfil.full[item.id],
+      config
+    }));
+}
+
 // ---- Tri ----
 
 function trierPersonnages(liste) {
@@ -92,8 +167,8 @@ function trierPersonnages(liste) {
       valA = Number(a.item.rarete) || 0;
       valB = Number(b.item.rarete) || 0;
     } else if (etatTri.cle === "points") {
-      valA = Number(a.item.PPC?.[a.valeur] ?? 0);
-      valB = Number(b.item.PPC?.[b.valeur] ?? 0);
+      valA = Number(a.item[a.config.pointsField]?.[a.valeur] ?? 0);
+      valB = Number(b.item[b.config.pointsField]?.[b.valeur] ?? 0);
     } else if (etatTri.cle === "constellation") {
       valA = a.valeur;
       valB = b.valeur;
@@ -122,19 +197,31 @@ function mettreAJourBoutonsTri() {
   });
 }
 
-function creerCarteProfilPersonnage(personnage, valeur) {
+function mettreAJourBoutonsVueEtBox() {
+  document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.view === vueActive);
+  });
+
+  document.querySelectorAll(".box-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.box === boxActive);
+  });
+}
+
+function creerCarteProfilPersonnage({ item, valeur, config }) {
   const card = document.createElement("div");
   card.className = "character-card";
 
-  const fond = getFondRarete(personnage.rarete);
+  const fond = getFondRarete(item.rarete);
+  const icone = getIconeItem(item, vueActive);
 
   card.innerHTML = `
     <div class="character-visuel" style="background-image: url('${fond}');">
-      <img src="../DB/${personnage.image}" alt="${personnage.nom}">
-      <div class="character-ppc-badge">${personnage.PPC?.[valeur] ?? ""}</div>
+      <img src="../DB/${item.image}" alt="${item.nom}">
+      ${icone ? `<img class="character-icone-type" src="${icone}" alt="">` : ""}
+      <div class="character-ppc-badge">${item[config.pointsField]?.[valeur] ?? ""}</div>
     </div>
-    <div class="character-name">${personnage.nom}</div>
-    <div class="character-level">${getLabelConstellation(valeur)}</div>
+    <div class="character-name">${item.nom}</div>
+    <div class="character-level">${getLabelConstellation(valeur, vueActive)}</div>
   `;
 
   return card;
@@ -144,10 +231,10 @@ function rendreProfilBox() {
   const container = document.getElementById("profile-box");
   container.innerHTML = "";
 
-  const listeTriee = trierPersonnages(personnagesAffiches);
+  const liste = trierPersonnages(construireListeAffichee());
 
-  listeTriee.forEach(({ item, valeur }) => {
-    container.appendChild(creerCarteProfilPersonnage(item, valeur));
+  liste.forEach(entree => {
+    container.appendChild(creerCarteProfilPersonnage(entree));
   });
 }
 
@@ -157,10 +244,8 @@ function initialiserBarreTri() {
       const cle = btn.dataset.sort;
 
       if (etatTri.cle === cle) {
-        // Même bouton recliqué : on inverse la direction
         etatTri.direction *= -1;
       } else {
-        // Nouveau critère : on repart en croissant
         etatTri.cle = cle;
         etatTri.direction = 1;
       }
@@ -171,26 +256,46 @@ function initialiserBarreTri() {
   });
 }
 
+function initialiserSelecteursVueEtBox() {
+  document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      vueActive = btn.dataset.view;
+      mettreAJourBoutonsVueEtBox();
+      rendreProfilBox();
+    });
+  });
+
+  document.querySelectorAll(".box-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      boxActive = btn.dataset.box;
+      mettreAJourBoutonsVueEtBox();
+      rendreProfilBox();
+    });
+  });
+}
+
 // ---- Ouverture / fermeture popup ----
 
 async function ouvrirProfil(discordId, nom) {
   try {
-    const [profil, personnages] = await Promise.all([
+    const [profil, personnages, armes] = await Promise.all([
       chargerProfil(discordId),
-      chargerPersonnages()
+      chargerPersonnages(),
+      chargerArmes()
     ]);
 
-    const fullBox = profil.data?.characters?.full || {};
+    profilCourant = profil;
+    personnagesData = personnages;
+    armesData = armes;
 
-    personnagesAffiches = personnages
-      .filter(p => (fullBox[p.id] ?? -1) >= 0)
-      .map(p => ({ item: p, valeur: fullBox[p.id] }));
-
-    // Réinitialise le tri à chaque ouverture de profil
+    vueActive = "characters";
+    boxActive = "full";
     etatTri = { cle: null, direction: 1 };
+
+    mettreAJourBoutonsVueEtBox();
     mettreAJourBoutonsTri();
 
-    document.getElementById("modal-title").textContent = `Box full de ${nom}`;
+    document.getElementById("modal-title").textContent = `Box de ${nom}`;
     rendreProfilBox();
     document.getElementById("modal").classList.add("active");
   } catch (error) {
@@ -220,6 +325,7 @@ async function demarrer() {
     afficherComptes(comptes);
     initialiserModal();
     initialiserBarreTri();
+    initialiserSelecteursVueEtBox();
   } catch (error) {
     console.error(error);
     alert("Erreur lors du chargement des comptes.");
