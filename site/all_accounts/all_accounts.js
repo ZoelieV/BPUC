@@ -36,6 +36,20 @@ function getLabelConstellation(valeur) {
   return `C${valeur}`;
 }
 
+function getFondRarete(rarete) {
+  const valeur = String(rarete);
+
+  if (valeur === "5") {
+    return "../DB/images/others/bg_5_star.webp";
+  }
+
+  if (valeur === "3") {
+    return "../DB/images/others/bg_3_star.webp";
+  }
+
+  return "../DB/images/others/bg_4_star.webp";
+}
+
 function afficherComptes(comptes) {
   const liste = document.getElementById("accounts-list");
   liste.innerHTML = "";
@@ -112,8 +126,10 @@ function creerCarteProfilPersonnage(personnage, valeur) {
   const card = document.createElement("div");
   card.className = "character-card";
 
+  const fond = getFondRarete(personnage.rarete);
+
   card.innerHTML = `
-    <div class="character-visuel">
+    <div class="character-visuel" style="background-image: url('${fond}');">
       <img src="../DB/${personnage.image}" alt="${personnage.nom}">
       <div class="character-ppc-badge">${personnage.PPC?.[valeur] ?? ""}</div>
     </div>
