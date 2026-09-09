@@ -1,7 +1,7 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #1e1e1e;
+  background-color: #1e1e1e;
   color: white;
+  font-family: Arial, sans-serif;
   margin: 20px;
 }
 
@@ -9,8 +9,13 @@ a {
   color: white;
 }
 
-h1 {
-  margin-bottom: 20px;
+.lien-accueil {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+h1, h2 {
+  margin-top: 20px;
 }
 
 #accounts-list {
@@ -20,17 +25,20 @@ h1 {
 }
 
 .account-card {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .account-card:hover {
-  background: rgba(255,255,255,0.14);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .account-card img {
@@ -50,11 +58,13 @@ h1 {
   opacity: 0.8;
 }
 
+/* ---- Modal ---- */
+
 #modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   z-index: 1000;
   align-items: center;
   justify-content: center;
@@ -89,6 +99,44 @@ h1 {
   cursor: pointer;
 }
 
+/* ---- Barre de tri (même style que .box-btn de my_account) ---- */
+
+#sort-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sort-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sort-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sort-btn.active {
+  border-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.sort-btn .fleche {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* ---- Cartes personnages dans la popup (même logique que carte-personnage) ---- */
+
 #profile-box {
   display: flex;
   flex-wrap: wrap;
@@ -98,21 +146,58 @@ h1 {
 .character-card {
   width: 110px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.character-card img {
+.character-visuel {
+  position: relative;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.character-visuel img {
   width: 80px;
   border-radius: 8px;
   display: block;
-  margin: 0 auto 6px;
+}
+
+.character-ppc-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .character-name {
+  margin-top: 6px;
   font-size: 13px;
   font-weight: bold;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 .character-level {
   font-size: 12px;
-  opacity: 0.85;
+  opacity: 0.95;
+  margin-top: 2px;
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.35);
 }

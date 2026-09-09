@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="all_accounts.css">
 </head>
 <body>
-<a href="../index.html">Accueil</a>
+<a href="../index.html" class="lien-accueil">Accueil</a>
 <h1>Liste des comptes</h1>
 
   <div id="accounts-list"></div>
@@ -18,6 +18,13 @@
         <h2 id="modal-title">Profil</h2>
         <button id="close-modal" type="button">×</button>
       </div>
+
+      <div id="sort-bar">
+        <button type="button" class="sort-btn" data-sort="rarete">Rareté <span class="fleche"></span></button>
+        <button type="button" class="sort-btn" data-sort="points">Points <span class="fleche"></span></button>
+        <button type="button" class="sort-btn" data-sort="constellation">Constellation <span class="fleche"></span></button>
+      </div>
+
       <div id="profile-box"></div>
     </div>
   </div>

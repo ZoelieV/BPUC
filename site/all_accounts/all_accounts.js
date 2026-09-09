@@ -1,3 +1,12 @@
+// État du tri actuellement affiché dans la popup
+let etatTri = {
+  cle: null,      // "rarete" | "points" | "constellation" | null
+  direction: 1    // 1 = croissant, -1 = décroissant
+};
+
+// Données du personnage courant affichées dans la popup (pour pouvoir re-trier sans refetch)
+let personnagesAffiches = [];
+
 async function chargerComptes() {
   const reponse = await fetch("/api/accounts");
   if (!reponse.ok) {
@@ -52,28 +61,101 @@ function afficherComptes(comptes) {
   });
 }
 
-function afficherBoxFull(profil, personnages) {
+// ---- Tri ----
+
+function trierPersonnages(liste) {
+  if (!etatTri.cle) {
+    return liste;
+  }
+
+  const copie = [...liste];
+
+  copie.sort((a, b) => {
+    let valA;
+    let valB;
+
+    if (etatTri.cle === "rarete") {
+      valA = Number(a.item.rarete) || 0;
+      valB = Number(b.item.rarete) || 0;
+    } else if (etatTri.cle === "points") {
+      valA = Number(a.item.PPC?.[a.valeur] ?? 0);
+      valB = Number(b.item.PPC?.[b.valeur] ?? 0);
+    } else if (etatTri.cle === "constellation") {
+      valA = a.valeur;
+      valB = b.valeur;
+    } else {
+      return 0;
+    }
+
+    return (valA - valB) * etatTri.direction;
+  });
+
+  return copie;
+}
+
+function mettreAJourBoutonsTri() {
+  document.querySelectorAll(".sort-btn").forEach(btn => {
+    const cle = btn.dataset.sort;
+    const fleche = btn.querySelector(".fleche");
+
+    if (cle === etatTri.cle) {
+      btn.classList.add("active");
+      fleche.textContent = etatTri.direction === 1 ? "▲" : "▼";
+    } else {
+      btn.classList.remove("active");
+      fleche.textContent = "";
+    }
+  });
+}
+
+function creerCarteProfilPersonnage(personnage, valeur) {
+  const card = document.createElement("div");
+  card.className = "character-card";
+
+  card.innerHTML = `
+    <div class="character-visuel">
+      <img src="../DB/${personnage.image}" alt="${personnage.nom}">
+      <div class="character-ppc-badge">${personnage.PPC?.[valeur] ?? ""}</div>
+    </div>
+    <div class="character-name">${personnage.nom}</div>
+    <div class="character-level">${getLabelConstellation(valeur)}</div>
+  `;
+
+  return card;
+}
+
+function rendreProfilBox() {
   const container = document.getElementById("profile-box");
   container.innerHTML = "";
 
-  const fullBox = profil.data?.characters?.full || {};
+  const listeTriee = trierPersonnages(personnagesAffiches);
 
-  const personnagesPossedes = personnages.filter(p => (fullBox[p.id] ?? -1) >= 0);
-
-  personnagesPossedes.forEach(personnage => {
-    const valeur = fullBox[personnage.id];
-    const card = document.createElement("div");
-    card.className = "character-card";
-
-    card.innerHTML = `
-      <img src="../DB/${personnage.image}" alt="${personnage.nom}">
-      <div class="character-name">${personnage.nom}</div>
-      <div class="character-level">${getLabelConstellation(valeur)}</div>
-    `;
-
-    container.appendChild(card);
+  listeTriee.forEach(({ item, valeur }) => {
+    container.appendChild(creerCarteProfilPersonnage(item, valeur));
   });
 }
+
+function initialiserBarreTri() {
+  document.querySelectorAll(".sort-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cle = btn.dataset.sort;
+
+      if (etatTri.cle === cle) {
+        // Même bouton recliqué : on inverse la direction
+        etatTri.direction *= -1;
+      } else {
+        // Nouveau critère : on repart en croissant
+        etatTri.cle = cle;
+        etatTri.direction = 1;
+      }
+
+      mettreAJourBoutonsTri();
+      rendreProfilBox();
+    });
+  });
+}
+
+// ---- Ouverture / fermeture popup ----
 
 async function ouvrirProfil(discordId, nom) {
   try {
@@ -82,8 +164,18 @@ async function ouvrirProfil(discordId, nom) {
       chargerPersonnages()
     ]);
 
+    const fullBox = profil.data?.characters?.full || {};
+
+    personnagesAffiches = personnages
+      .filter(p => (fullBox[p.id] ?? -1) >= 0)
+      .map(p => ({ item: p, valeur: fullBox[p.id] }));
+
+    // Réinitialise le tri à chaque ouverture de profil
+    etatTri = { cle: null, direction: 1 };
+    mettreAJourBoutonsTri();
+
     document.getElementById("modal-title").textContent = `Box full de ${nom}`;
-    afficherBoxFull(profil, personnages);
+    rendreProfilBox();
     document.getElementById("modal").classList.add("active");
   } catch (error) {
     console.error(error);
@@ -111,6 +203,7 @@ async function demarrer() {
     const comptes = await chargerComptes();
     afficherComptes(comptes);
     initialiserModal();
+    initialiserBarreTri();
   } catch (error) {
     console.error(error);
     alert("Erreur lors du chargement des comptes.");
