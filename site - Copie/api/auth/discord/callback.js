@@ -1,16 +1,9 @@
-const { createClient } = require("@supabase/supabase-js");
 const {
   SESSION_TTL_SECONDS,
   parseCookies,
   setCookie,
   createSessionToken
 } = require("../../_lib/session");
-
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
-
 module.exports = async (req, res) => {
   try {
     const currentUrl = new URL(req.url, `https://${req.headers.host}`);
@@ -27,15 +20,13 @@ module.exports = async (req, res) => {
     const tokenResponse = await fetch("https://discord.com/api/oauth2/token", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+        "Content-Type": "application/x-www-form-urlencoded"      },
       body: new URLSearchParams({
         client_id: process.env.DISCORD_CLIENT_ID,
         client_secret: process.env.DISCORD_CLIENT_SECRET,
         grant_type: "authorization_code",
         code,
-        redirect_uri: process.env.DISCORD_REDIRECT_URI
-      }).toString()
+        redirect_uri: process.env.DISCORD_REDIRECT_URI      }).toString()
     });
 
     if (!tokenResponse.ok) {
@@ -48,8 +39,7 @@ module.exports = async (req, res) => {
 
     const userResponse = await fetch("https://discord.com/api/users/@me", {
       headers: {
-        Authorization: `Bearer ${tokenData.access_token}`
-      }
+        Authorization: `Bearer ${tokenData.access_token}`      }
     });
 
     if (!userResponse.ok) {
@@ -60,9 +50,7 @@ module.exports = async (req, res) => {
 
     const discordUser = await userResponse.json();
 
-    const avatarUrl = discordUser.avatar
-      ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png?size=128`
-      : null;
+    const avatarUrl = discordUser.avatar      ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png?size=128`      : null;
 
     const user = {
       id: discordUser.id,
@@ -71,41 +59,22 @@ module.exports = async (req, res) => {
       avatar: avatarUrl
     };
 
-    const { error: upsertError } = await supabase
-      .from("profiles")
-      .upsert(
-        {
-          discord_id: user.id,
-          discord_username: user.username,
-          discord_global_name: user.global_name,
-          discord_avatar_url: user.avatar
-        },
-        { onConflict: "discord_id" }
-      );
-
-    if (upsertError) {
-      console.error("Erreur upsert profile:", upsertError);
-    }
-
     setCookie(res, "discord_oauth_state", "", {
       httpOnly: true,
       secure: true,
       sameSite: "Lax",
       path: "/",
-      maxAge: 0
-    });
+      maxAge: 0    });
 
     setCookie(res, "session", createSessionToken(user), {
       httpOnly: true,
       secure: true,
       sameSite: "Lax",
       path: "/",
-      maxAge: SESSION_TTL_SECONDS
-    });
+      maxAge: SESSION_TTL_SECONDS    });
 
     res.writeHead(302, {
-      Location: process.env.AUTH_SUCCESS_REDIRECT || "/"
-    });
+      Location: process.env.AUTH_SUCCESS_REDIRECT || "/"    });
     res.end();
   } catch (error) {
     console.error(error);

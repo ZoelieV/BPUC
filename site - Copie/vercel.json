@@ -1,0 +1,6 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/my_account", "destination": "/my_account/my_account" }
+  ]
+}
