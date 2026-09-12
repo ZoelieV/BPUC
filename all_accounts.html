@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tous les comptes</title>
+<link rel="stylesheet" href="all_accounts.css">
+</head>
+<body>
+<a href="../index.html" class="lien-accueil">Accueil</a>
+<h1>Liste des comptes</h1>
+
+  <div id="accounts-list"></div>
+
+  <div id="modal">
+    <div id="modal-content">
+      <div id="modal-header">
+        <h2 id="modal-title">Profil</h2>
+        <button id="close-modal" type="button">×</button>
+      </div>
+
+      <div id="view-selector">
+        <button type="button" class="view-btn active" data-view="characters">Personnages</button>
+        <button type="button" class="view-btn" data-view="weapons">Armes</button>
+      </div>
+
+      <div id="box-selector">
+        <button type="button" class="box-btn active" data-box="full">Full box</button>
+        <button type="button" class="box-btn" data-box="stuff">Stuff</button>
+      </div>
+
+      <!-- Filtres d'éléments pour les personnages -->
+      <div class="bloc-filtres">
+        <strong>Éléments :</strong>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="pyro"><img src="../DB/images/others/pyro.webp" alt="Pyro" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="hydro"><img src="../DB/images/others/hydro.webp" alt="Hydro" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="electro"><img src="../DB/images/others/electro.webp" alt="Electro" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="cryo"><img src="../DB/images/others/cryo.webp" alt="Cryo" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="anemo"><img src="../DB/images/others/anemo.webp" alt="Anemo" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="geo"><img src="../DB/images/others/geo.webp" alt="Geo" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-element" value="dendro"><img src="../DB/images/others/dendro.webp" alt="Dendro" width="30"></label>
+      </div>
+
+      <!-- Filtres de types d'armes pour les armes -->
+      <div class="bloc-filtres">
+        <strong>Armes :</strong>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="sword"><img src="../DB/images/others/sword.webp" alt="Sword" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="claymore"><img src="../DB/images/others/claymore.webp" alt="Claymore" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="polearm"><img src="../DB/images/others/polearm.webp" alt="Polearm" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="bow"><img src="../DB/images/others/bow.webp" alt="Bow" width="30"></label>
+        <label class="filtre-icone"><input type="checkbox" class="filtre-arme" value="catalyst"><img src="../DB/images/others/catalyst.webp" alt="Catalyst" width="30"></label>
+      </div>
+
+      <!-- Filtres de rareté -->
+      <div class="bloc-filtres">
+        <strong>Rareté :</strong>
+        <label class="filtre-texte"><input type="checkbox" class="filtre-rarete" value="4"><span>4★</span></label>
+        <label class="filtre-texte"><input type="checkbox" class="filtre-rarete" value="5"><span>5★</span></label>
+      </div>
+
+      <div id="sort-bar">
+        <button type="button" class="sort-btn" data-sort="rarete">Rareté <span class="fleche"></span></button>
+        <button type="button" class="sort-btn" data-sort="points">Points <span class="fleche"></span></button>
+        <button type="button" class="sort-btn" data-sort="constellation">Constellation <span class="fleche"></span></button>
+        <button type="button" class="sort-btn" data-sort="element">Élément <span class="fleche"></span></button>
+      </div>
+
+      <div id="profile-box"></div>
+    </div>
+  </div>
+
+  <script src="all_accounts.js"></script>
+</body>
+</html>
