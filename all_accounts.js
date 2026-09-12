@@ -39,11 +39,6 @@ let profilCourant = null;
 let personnagesData = [];
 let armesData = [];
 
-// Filtres d'éléments
-let filtresElements = new Set();
-let filtresTypesArmes = new Set();
-let filtresRareté = new Set();
-
 async function chargerComptes() {
   const reponse = await fetch("/api/accounts");
   if (!reponse.ok) {
@@ -177,17 +172,11 @@ function trierPersonnages(liste) {
     } else if (etatTri.cle === "constellation") {
       valA = a.valeur;
       valB = b.valeur;
-    } else if (etatTri.cle === "element") {
-      // Tri par élément pour les personnages
-      valA = a.item.element || "";
-      valB = b.item.element || "";
     } else {
       return 0;
     }
 
-    // Gestion du tri ascendant/descendant
-    const comparaison = valA < valB ? -1 : (valA > valB ? 1 : 0);
-    return comparaison * etatTri.direction;
+    return (valA - valB) * etatTri.direction;
   });
 
   return copie;
@@ -285,46 +274,6 @@ function initialiserSelecteursVueEtBox() {
   });
 }
 
-// ---- Gestion des filtres ----
-
-function initialiserFiltres() {
-  // Filtres d'éléments pour les personnages
-  document.querySelectorAll(".filtre-element").forEach(input => {
-    input.addEventListener("change", () => {
-      if (input.checked) {
-        filtresElements.add(input.value);
-      } else {
-        filtresElements.delete(input.value);
-      }
-      rendreProfilBox();
-    });
-  });
-
-  // Filtres de types d'armes pour les armes
-  document.querySelectorAll(".filtre-arme").forEach(input => {
-    input.addEventListener("change", () => {
-      if (input.checked) {
-        filtresTypesArmes.add(input.value);
-      } else {
-        filtresTypesArmes.delete(input.value);
-      }
-      rendreProfilBox();
-    });
-  });
-
-  // Filtres de rareté
-  document.querySelectorAll(".filtre-rarete").forEach(input => {
-    input.addEventListener("change", () => {
-      if (input.checked) {
-        filtresRareté.add(input.value);
-      } else {
-        filtresRareté.delete(input.value);
-      }
-      rendreProfilBox();
-    });
-  });
-}
-
 // ---- Ouverture / fermeture popup ----
 
 async function ouvrirProfil(discordId, nom) {
@@ -342,11 +291,6 @@ async function ouvrirProfil(discordId, nom) {
     vueActive = "characters";
     boxActive = "full";
     etatTri = { cle: null, direction: 1 };
-
-    // Réinitialiser les filtres
-    filtresElements.clear();
-    filtresTypesArmes.clear();
-    filtresRareté.clear();
 
     mettreAJourBoutonsVueEtBox();
     mettreAJourBoutonsTri();
@@ -382,7 +326,6 @@ async function demarrer() {
     initialiserModal();
     initialiserBarreTri();
     initialiserSelecteursVueEtBox();
-    initialiserFiltres();
   } catch (error) {
     console.error(error);
     alert("Erreur lors du chargement des comptes.");
