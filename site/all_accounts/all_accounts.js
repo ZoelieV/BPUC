@@ -32,7 +32,10 @@ const configCollections = {
 // État courant de la popup
 let vueActive = "characters";   // "characters" | "weapons"
 let boxActive = "full";         // "full" | "stuff"
-let etatTri = { cle: null, direction: 1, typeValeur: null };
+let etatTri = { cle: null, direction: 1 };
+
+// Filtre multi-élément/type, indépendant du tri, conservé séparément par vue
+let filtreType = { characters: new Set(), weapons: new Set() };
 
 // Données brutes du profil ouvert, conservées pour re-render sans refetch
 let profilCourant = null;
@@ -128,6 +131,8 @@ function construireListeAffichee() {
   const config = configCollections[vueActive];
   const items = vueActive === "characters" ? personnagesData : armesData;
   const collectionProfil = profilCourant.data?.[vueActive] || { full: {}, selections: {} };
+  const champType = vueActive === "characters" ? "element" : "type";
+  const filtresActifs = filtreType[vueActive];
 
   return items
     .filter(item => {
@@ -137,8 +142,12 @@ function construireListeAffichee() {
         return false;
       }
 
-      if (boxActive === "stuff") {
-        return !!collectionProfil.selections?.stuff?.[item.id];
+      if (boxActive === "stuff" && !collectionProfil.selections?.stuff?.[item.id]) {
+        return false;
+      }
+
+      if (filtresActifs.size > 0 && !filtresActifs.has(item[champType])) {
+        return false;
       }
 
       return true;
@@ -172,10 +181,6 @@ function trierPersonnages(liste) {
     } else if (etatTri.cle === "constellation") {
       valA = a.valeur;
       valB = b.valeur;
-    } else if (etatTri.cle === "type") {
-      const champ = vueActive === "characters" ? "element" : "type";
-      valA = a.item[champ] === etatTri.typeValeur ? 0 : 1;
-      valB = b.item[champ] === etatTri.typeValeur ? 0 : 1;
     } else {
       return 0;
     }
@@ -199,10 +204,12 @@ function mettreAJourBoutonsTri() {
       fleche.textContent = "";
     }
   });
+}
 
+function mettreAJourIconesFiltreType() {
   document.querySelectorAll(".type-sort-icone").forEach(btn => {
-    const estActive = etatTri.cle === "type" && btn.dataset.valeur === etatTri.typeValeur;
-    btn.classList.toggle("active", estActive);
+    const actif = filtreType[vueActive].has(btn.dataset.valeur);
+    btn.classList.toggle("active", actif);
   });
 }
 
@@ -261,20 +268,22 @@ function genererBarreTypeSort() {
     btn.innerHTML = `<img src="${src}" alt="${valeur}">`;
 
     btn.addEventListener("click", () => {
-      if (etatTri.cle === "type" && etatTri.typeValeur === valeur) {
-        etatTri.direction *= -1;
+      const set = filtreType[vueActive];
+
+      if (set.has(valeur)) {
+        set.delete(valeur);
       } else {
-        etatTri.cle = "type";
-        etatTri.typeValeur = valeur;
-        etatTri.direction = 1;
+        set.add(valeur);
       }
 
-      mettreAJourBoutonsTri();
+      mettreAJourIconesFiltreType();
       rendreProfilBox();
     });
 
     container.appendChild(btn);
   });
+
+  mettreAJourIconesFiltreType();
 }
 
 function initialiserBarreTri() {
@@ -287,7 +296,6 @@ function initialiserBarreTri() {
       } else {
         etatTri.cle = cle;
         etatTri.direction = 1;
-        etatTri.typeValeur = null;
       }
 
       mettreAJourBoutonsTri();
@@ -301,13 +309,8 @@ function initialiserSelecteursVueEtBox() {
     btn.addEventListener("click", () => {
       vueActive = btn.dataset.view;
 
-      if (etatTri.cle === "type") {
-        etatTri = { cle: null, direction: 1, typeValeur: null };
-      }
-
       mettreAJourBoutonsVueEtBox();
       genererBarreTypeSort();
-      mettreAJourBoutonsTri();
       rendreProfilBox();
     });
   });
@@ -337,7 +340,8 @@ async function ouvrirProfil(discordId, nom) {
 
     vueActive = "characters";
     boxActive = "full";
-    etatTri = { cle: null, direction: 1, typeValeur: null };
+    etatTri = { cle: null, direction: 1 };
+    filtreType = { characters: new Set(), weapons: new Set() };
 
     mettreAJourBoutonsVueEtBox();
     genererBarreTypeSort();
