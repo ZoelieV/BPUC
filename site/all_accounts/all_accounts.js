@@ -32,7 +32,7 @@ const configCollections = {
 // État courant de la popup
 let vueActive = "characters";   // "characters" | "weapons"
 let boxActive = "full";         // "full" | "stuff"
-let etatTri = { cle: null, direction: 1 };
+let etatTri = { cle: null, direction: 1, typeValeur: null };
 
 // Données brutes du profil ouvert, conservées pour re-render sans refetch
 let profilCourant = null;
@@ -172,6 +172,10 @@ function trierPersonnages(liste) {
     } else if (etatTri.cle === "constellation") {
       valA = a.valeur;
       valB = b.valeur;
+    } else if (etatTri.cle === "type") {
+      const champ = vueActive === "characters" ? "element" : "type";
+      valA = a.item[champ] === etatTri.typeValeur ? 0 : 1;
+      valB = b.item[champ] === etatTri.typeValeur ? 0 : 1;
     } else {
       return 0;
     }
@@ -194,6 +198,11 @@ function mettreAJourBoutonsTri() {
       btn.classList.remove("active");
       fleche.textContent = "";
     }
+  });
+
+  document.querySelectorAll(".type-sort-icone").forEach(btn => {
+    const estActive = etatTri.cle === "type" && btn.dataset.valeur === etatTri.typeValeur;
+    btn.classList.toggle("active", estActive);
   });
 }
 
@@ -238,6 +247,36 @@ function rendreProfilBox() {
   });
 }
 
+function genererBarreTypeSort() {
+  const container = document.getElementById("type-sort-bar");
+  container.innerHTML = "";
+
+  const icones = vueActive === "characters" ? iconesElements : iconesTypesArmes;
+
+  Object.entries(icones).forEach(([valeur, src]) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "type-sort-icone";
+    btn.dataset.valeur = valeur;
+    btn.innerHTML = `<img src="${src}" alt="${valeur}">`;
+
+    btn.addEventListener("click", () => {
+      if (etatTri.cle === "type" && etatTri.typeValeur === valeur) {
+        etatTri.direction *= -1;
+      } else {
+        etatTri.cle = "type";
+        etatTri.typeValeur = valeur;
+        etatTri.direction = 1;
+      }
+
+      mettreAJourBoutonsTri();
+      rendreProfilBox();
+    });
+
+    container.appendChild(btn);
+  });
+}
+
 function initialiserBarreTri() {
   document.querySelectorAll(".sort-btn").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -248,6 +287,7 @@ function initialiserBarreTri() {
       } else {
         etatTri.cle = cle;
         etatTri.direction = 1;
+        etatTri.typeValeur = null;
       }
 
       mettreAJourBoutonsTri();
@@ -260,7 +300,14 @@ function initialiserSelecteursVueEtBox() {
   document.querySelectorAll(".view-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       vueActive = btn.dataset.view;
+
+      if (etatTri.cle === "type") {
+        etatTri = { cle: null, direction: 1, typeValeur: null };
+      }
+
       mettreAJourBoutonsVueEtBox();
+      genererBarreTypeSort();
+      mettreAJourBoutonsTri();
       rendreProfilBox();
     });
   });
@@ -290,9 +337,10 @@ async function ouvrirProfil(discordId, nom) {
 
     vueActive = "characters";
     boxActive = "full";
-    etatTri = { cle: null, direction: 1 };
+    etatTri = { cle: null, direction: 1, typeValeur: null };
 
     mettreAJourBoutonsVueEtBox();
+    genererBarreTypeSort();
     mettreAJourBoutonsTri();
 
     document.getElementById("modal-title").textContent = `Box de ${nom}`;

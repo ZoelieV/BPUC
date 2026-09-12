@@ -126,6 +126,36 @@ h1, h2 {
   background-color: rgba(255, 255, 255, 0.12);
 }
 
+/* ---- Barre d'icônes de tri élément/type (identique à .filtre-icone de my_account) ---- */
+
+#type-sort-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.type-sort-icone {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-sort-icone img {
+  display: block;
+  width: 30px;
+}
+
+.type-sort-icone.active {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
 /* ---- Barre de tri (même style que .box-btn de my_account) ---- */
 
 #sort-bar {
