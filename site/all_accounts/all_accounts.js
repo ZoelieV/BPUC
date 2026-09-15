@@ -125,6 +125,14 @@ function possedeArmeSignature(personnage) {
   return valeurArme >= 0 ? arme : null;
 }
 
+// Sens inverse : à partir d'une arme, retrouve le personnage dont c'est l'arme signature
+function trouverPersonnageParArmeSignature(armeId) {
+  return personnagesData.find(perso => {
+    const arme = trouverArmeSignature(perso.id);
+    return arme && arme.id === armeId;
+  });
+}
+
 function afficherComptes(comptes) {
   const liste = document.getElementById("accounts-list");
   liste.innerHTML = "";
@@ -260,12 +268,18 @@ function creerCarteProfilPersonnage({ item, valeur, config }) {
     ? `<img class="character-arme-signature" src="${iconesTypesArmesSignature[item.arme] || ""}" alt="${item.arme || ""}">`
     : "";
 
+  const personnageLie = vueActive === "weapons" ? trouverPersonnageParArmeSignature(item.id) : null;
+  const previewPersonnageHtml = personnageLie
+    ? `<img class="personnage-preview" src="../DB/${personnageLie.image}" alt="${personnageLie.nom}">`
+    : "";
+
   card.innerHTML = `
     <div class="character-visuel" style="background-image: url('${fond}');">
       <img src="../DB/${item.image}" alt="${item.nom}">
       ${icone ? `<img class="character-icone-type" src="${icone}" alt="">` : ""}
       <div class="character-ppc-badge">${item[config.pointsField]?.[valeur] ?? ""}</div>
       ${iconeArmeHtml}
+      ${previewPersonnageHtml}
     </div>
     <div class="character-name">${item.nom}</div>
     <div class="character-level">${getLabelConstellation(valeur, vueActive)}</div>
