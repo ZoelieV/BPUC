@@ -279,11 +279,11 @@
     "PPW": [0, 0, 0, 0, 0]
   },
   {
-    "id": "flin_w",
+    "id": "flins_w",
     "nom": "Ruines sanglantes",
     "element": "electro",
     "type": "polearm",
-    "image": "images/weapons/flins_w.webp",
+    "image": "images/weapons/flin_w.webp",
     "rarete": "5",
     "PPW": [0, 0, 0, 0, 0]
   },
