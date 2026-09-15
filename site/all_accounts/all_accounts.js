@@ -100,6 +100,23 @@ function getIconeItem(item, vue) {
   return iconesTypesArmes[item.type] || "";
 }
 
+// Arme signature : image nommée "[id_personnage]_w.webp"
+function trouverArmeSignature(personnageId) {
+  return armesData.find(
+    arme => typeof arme.image === "string" && arme.image.endsWith(`${personnageId}_w.webp`)
+  );
+}
+
+function possedeArmeSignature(personnage) {
+  const arme = trouverArmeSignature(personnage.id);
+  if (!arme) {
+    return null;
+  }
+
+  const valeurArme = profilCourant.data?.weapons?.full?.[arme.id] ?? -1;
+  return valeurArme >= 0 ? arme : null;
+}
+
 function afficherComptes(comptes) {
   const liste = document.getElementById("accounts-list");
   liste.innerHTML = "";
@@ -230,11 +247,17 @@ function creerCarteProfilPersonnage({ item, valeur, config }) {
   const fond = getFondRarete(item.rarete);
   const icone = getIconeItem(item, vueActive);
 
+  const armeSignature = vueActive === "characters" ? possedeArmeSignature(item) : null;
+  const iconeArmeHtml = armeSignature
+    ? `<img class="character-arme-signature" src="../DB/${armeSignature.image}" alt="${armeSignature.nom || ""}">`
+    : "";
+
   card.innerHTML = `
     <div class="character-visuel" style="background-image: url('${fond}');">
       <img src="../DB/${item.image}" alt="${item.nom}">
       ${icone ? `<img class="character-icone-type" src="${icone}" alt="">` : ""}
       <div class="character-ppc-badge">${item[config.pointsField]?.[valeur] ?? ""}</div>
+      ${iconeArmeHtml}
     </div>
     <div class="character-name">${item.nom}</div>
     <div class="character-level">${getLabelConstellation(valeur, vueActive)}</div>
