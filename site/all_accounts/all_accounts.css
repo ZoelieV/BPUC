@@ -264,10 +264,6 @@ h1, h2 {
   right: 2px;
   width: 18px;
   height: 18px;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 2px;
-  box-sizing: border-box;
   object-fit: contain;
 }
 

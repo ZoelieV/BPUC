@@ -16,6 +16,14 @@ const iconesTypesArmes = {
   catalyst: "../DB/images/others/catalyst.webp"
 };
 
+const iconesTypesArmesSignature = {
+  sword: "../DB/images/others/sword_icon.webp",
+  claymore: "../DB/images/others/claymore_icon.webp",
+  polearm: "../DB/images/others/polearm_icon.webp",
+  bow: "../DB/images/others/bow_icon.webp",
+  catalyst: "../DB/images/others/catalyst_icon.webp"
+};
+
 const configCollections = {
   characters: {
     pointsField: "PPC",
@@ -247,9 +255,9 @@ function creerCarteProfilPersonnage({ item, valeur, config }) {
   const fond = getFondRarete(item.rarete);
   const icone = getIconeItem(item, vueActive);
 
-  const armeSignature = vueActive === "characters" ? possedeArmeSignature(item) : null;
-  const iconeArmeHtml = armeSignature
-    ? `<img class="character-arme-signature" src="../DB/${armeSignature.image}" alt="${armeSignature.nom || ""}">`
+  const possedeSignature = vueActive === "characters" ? !!possedeArmeSignature(item) : false;
+  const iconeArmeHtml = possedeSignature
+    ? `<img class="character-arme-signature" src="${iconesTypesArmesSignature[item.arme] || ""}" alt="${item.arme || ""}">`
     : "";
 
   card.innerHTML = `
