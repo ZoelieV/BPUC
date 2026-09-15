@@ -262,9 +262,10 @@ h1, h2 {
   position: absolute;
   top: 28px;
   right: 2px;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
+  display: block;
 }
 
 .character-name {
