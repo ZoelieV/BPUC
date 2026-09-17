@@ -276,7 +276,7 @@ h1, h2 {
 .perso-lie-icone {
   position: absolute;
   bottom: 4px;
-  right: 2px;
+  right: 1px;
   width: 30px;
   height: 30px;
   object-fit: cover;
