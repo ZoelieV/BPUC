@@ -277,17 +277,16 @@ h1, h2 {
   position: absolute;
   bottom: 2px;
   right: 2px;
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .character-visuel img.perso-lie-icone {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 
 .character-name {
