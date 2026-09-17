@@ -269,22 +269,22 @@ h1, h2 {
 }
 
 .character-visuel img.character-arme-signature {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 }
 
 .perso-lie-icone {
   position: absolute;
-  bottom: 2px;
+  bottom: 4px;
   right: 2px;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
 }
 
 .character-visuel img.perso-lie-icone {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
 }
 
 .character-name {
