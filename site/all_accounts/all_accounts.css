@@ -279,9 +279,7 @@ h1, h2 {
   right: 2px;
   width: 28px;
   height: 28px;
-  border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .character-visuel img.perso-lie-icone {
