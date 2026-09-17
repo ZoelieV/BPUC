@@ -269,8 +269,8 @@ function creerCarteProfilPersonnage({ item, valeur, config }) {
     : "";
 
   const personnageLie = vueActive === "weapons" ? trouverPersonnageParArmeSignature(item.id) : null;
-  const previewPersonnageHtml = personnageLie
-    ? `<img class="personnage-preview" src="../DB/${personnageLie.image}" alt="${personnageLie.nom}">`
+  const iconePersonnageLieHtml = personnageLie
+    ? `<img class="perso-lie-icone" src="../DB/images/characters/side_char/${personnageLie.id}_side.webp" alt="${personnageLie.nom}">`
     : "";
 
   card.innerHTML = `
@@ -279,7 +279,7 @@ function creerCarteProfilPersonnage({ item, valeur, config }) {
       ${icone ? `<img class="character-icone-type" src="${icone}" alt="">` : ""}
       <div class="character-ppc-badge">${item[config.pointsField]?.[valeur] ?? ""}</div>
       ${iconeArmeHtml}
-      ${previewPersonnageHtml}
+      ${iconePersonnageLieHtml}
     </div>
     <div class="character-name">${item.nom}</div>
     <div class="character-level">${getLabelConstellation(valeur, vueActive)}</div>

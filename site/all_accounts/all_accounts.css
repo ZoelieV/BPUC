@@ -273,23 +273,21 @@ h1, h2 {
   height: 24px;
 }
 
-.character-visuel img.personnage-preview {
-  display: none;
+.perso-lie-icone {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 65%;
-  height: 65%;
+  bottom: 2px;
+  right: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  z-index: 20;
-  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-.character-visuel:hover img.personnage-preview {
-  display: block;
+.character-visuel img.perso-lie-icone {
+  width: 22px;
+  height: 22px;
 }
 
 .character-name {
